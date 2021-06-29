@@ -215,7 +215,7 @@ index c7fb5a737cab0083c39732247acb8f4e87562894..22de1b3587f4c8372ab4a3e0969b1419
 +    private void silkTouchSettings() {
 +        silkTouchEnabled = getBoolean("gameplay-mechanics.silk-touch.enabled", silkTouchEnabled);
 +        silkTouchSpawnerName = getString("gameplay-mechanics.silk-touch.spawner-name", silkTouchSpawnerName);
-+        minimumSilkTouchSpawnerRequire = getInt("gameplay-mechanics.silk-touch.minimum-level", minimumSilkTouchSpawnerRequire);
++        minimumSilkTouchSpawnerRequire = getInt("gameplay-mechanics.silk-touch.minimal-level", minimumSilkTouchSpawnerRequire);
 +        silkTouchSpawnerLore.clear();
 +        getList("gameplay-mechanics.silk-touch.spawner-lore", new ArrayList<String>(){{
 +            add("Spawns a {mob}");
