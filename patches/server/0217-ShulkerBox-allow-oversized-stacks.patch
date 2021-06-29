@@ -35,10 +35,10 @@ index 2c1c6562efe8cdc079b4e353144d20c1e46355c5..af935a03d3677314cd367686d65e89b6
                  NBTTagCompound nbttagcompound = tileentityshulkerbox.e(new NBTTagCompound());
  
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index cda80cf8d2556defd1453b473aca76bf7c014794..0afe0d9c0b9d4c7abc6f65938d8fd147df52f880 100644
+index 7691b7fa555c3e2e29d9ff6b76e517917899fe0f..b7657829478d8e978e6fcc7374a10822db6e84ac 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -630,6 +630,11 @@ public class PurpurWorldConfig {
+@@ -632,6 +632,11 @@ public class PurpurWorldConfig {
          }
      }
  

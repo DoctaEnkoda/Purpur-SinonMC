@@ -17,10 +17,10 @@ index 437d602cf4a0da52fc61a50321d795290eea11bf..fe07d9798eaae670e218d25fe23256c8
  
      @Override
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index f0f8165c51c17855d0c719d47bea194b80ff7847..c84a331c157ea1180813cba1107bf901a35b2833 100644
+index 81a01b79e4839364f3069cc226fc5f26bd31de26..674d0897e289d0799284c5523053070a7c8667b9 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -1206,6 +1206,7 @@ public class PurpurWorldConfig {
+@@ -1208,6 +1208,7 @@ public class PurpurWorldConfig {
      public boolean phantomIgnorePlayersWithTorch = false;
      public boolean phantomBurnInDaylight = true;
      public boolean phantomAllowGriefing = false;
@@ -28,7 +28,7 @@ index f0f8165c51c17855d0c719d47bea194b80ff7847..c84a331c157ea1180813cba1107bf901
      public double phantomMaxHealth = 20.0D;
      private void phantomSettings() {
          phantomRidable = getBoolean("mobs.phantom.ridable", phantomRidable);
-@@ -1232,6 +1233,7 @@ public class PurpurWorldConfig {
+@@ -1234,6 +1235,7 @@ public class PurpurWorldConfig {
          phantomBurnInDaylight = getBoolean("mobs.phantom.burn-in-daylight", phantomBurnInDaylight);
          phantomIgnorePlayersWithTorch = getBoolean("mobs.phantom.ignore-players-with-torch", phantomIgnorePlayersWithTorch);
          phantomAllowGriefing = getBoolean("mobs.phantom.allow-griefing", phantomAllowGriefing);

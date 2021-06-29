@@ -28,7 +28,7 @@ index 6085c5f75bd85cca3462613c18c2e2bf26205d1b..e20452f55c531f76ecaae9ba5d0ea3f8
  
          return itemstack.isEmpty() ? new ItemStack(Items.BUCKET) : itemstack;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index e2f49196642a325ac24f9245d5576547f20a044f..7274008b7ff43f82574c748bac3566564792d05b 100644
+index 2f68d5e389729fac0b1072af080a0fcbfe50f718..4e1c13098b3c42754634dbc7f5159ee658a7a3d6 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -147,8 +147,10 @@ public class PurpurWorldConfig {

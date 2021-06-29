@@ -42,10 +42,10 @@ index fea99134e77d7cbc77c89318753e7294d3f6a15a..1a764ba0a7402ce71038635f48d4b578
      }
  
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 23f7a3af8f92fd6e89601b0e1b4b2d1635dfe0b0..b2d7e4ee4ecef476d633278c960130110c862520 100644
+index 2f654527f39a9c6486659acecc654810d45fb23c..aaa6b63de0688c8ba2caf015b88159241afab6e7 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -833,6 +833,7 @@ public class PurpurWorldConfig {
+@@ -835,6 +835,7 @@ public class PurpurWorldConfig {
      public boolean enderDragonAlwaysDropsFullExp = false;
      public boolean enderDragonBypassMobGriefing = false;
      public double enderDragonMaxHealth = 200.0D;
@@ -53,7 +53,7 @@ index 23f7a3af8f92fd6e89601b0e1b4b2d1635dfe0b0..b2d7e4ee4ecef476d633278c96013011
      private void enderDragonSettings() {
          enderDragonRidable = getBoolean("mobs.ender_dragon.ridable", enderDragonRidable);
          enderDragonRidableInWater = getBoolean("mobs.ender_dragon.ridable-in-water", enderDragonRidableInWater);
-@@ -849,6 +850,7 @@ public class PurpurWorldConfig {
+@@ -851,6 +852,7 @@ public class PurpurWorldConfig {
              set("mobs.ender_dragon.attributes.max_health", oldValue);
          }
          enderDragonMaxHealth = getDouble("mobs.ender_dragon.attributes.max_health", enderDragonMaxHealth);
@@ -61,7 +61,7 @@ index 23f7a3af8f92fd6e89601b0e1b4b2d1635dfe0b0..b2d7e4ee4ecef476d633278c96013011
      }
  
      public boolean endermanRidable = false;
-@@ -1793,6 +1795,7 @@ public class PurpurWorldConfig {
+@@ -1795,6 +1797,7 @@ public class PurpurWorldConfig {
      public float witherHealthRegenAmount = 1.0f;
      public int witherHealthRegenDelay = 20;
      public double witherMaxHealth = 300.0D;
@@ -69,7 +69,7 @@ index 23f7a3af8f92fd6e89601b0e1b4b2d1635dfe0b0..b2d7e4ee4ecef476d633278c96013011
      private void witherSettings() {
          witherRidable = getBoolean("mobs.wither.ridable", witherRidable);
          witherRidableInWater = getBoolean("mobs.wither.ridable-in-water", witherRidableInWater);
-@@ -1810,6 +1813,7 @@ public class PurpurWorldConfig {
+@@ -1812,6 +1815,7 @@ public class PurpurWorldConfig {
              set("mobs.wither.attributes.max_health", oldValue);
          }
          witherMaxHealth = getDouble("mobs.wither.attributes.max_health", witherMaxHealth);

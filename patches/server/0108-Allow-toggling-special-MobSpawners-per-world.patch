@@ -106,7 +106,7 @@ index b6b4e759975776afcb9d33e650774b9e30d7eb96..a3215b1cccf4d00de888ca4696c03ffb
          this.world = new CraftWorld((WorldServer) this, gen, env);
          this.ticksPerAnimalSpawns = this.getServer().getTicksPerAnimalSpawns(); // CraftBukkit
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index db9deac5b43626b264f1237d8a2d2535d7bb639b..63cf32fe3359eb00f5e526689a9b10f673911a86 100644
+index 091bba00d66c708f783adf77d7c9cec4838b2490..d854f65e2783a144b47bba49b9a94de8a5056cc3 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -7,6 +7,8 @@ import net.minecraft.world.level.block.Blocks;

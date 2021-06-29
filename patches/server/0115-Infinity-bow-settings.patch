@@ -26,7 +26,7 @@ index 015f4d71f35a9d512814389b6e6cab74c0daf116..c7e20b25b4d09463fa54c66e62208e90
                      entityhuman.b(StatisticList.ITEM_USED.b(this));
                  }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 9a18d3612d38cdd3d85cc69fba6df355b6cc6829..e982733732e3dfd9d34cf5d9e87a9caa3af2d6e8 100644
+index fc5f0ffd274d2e137d9852a77ee2a6dfbe269730..c275e834f94ec602fe16926366aba1dacb3de1e0 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -209,6 +209,15 @@ public class PurpurWorldConfig {

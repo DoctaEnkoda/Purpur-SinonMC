@@ -42,10 +42,10 @@ index a97b8d8116920237964cc3a887525f8c3804c640..a0c731af6dffa30832b321f8fd86cef7
  
                  EntityLightning entitylightning = (EntityLightning) EntityTypes.LIGHTNING_BOLT.a((World) this);
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index d6bd971a62af7341f8dc8b3afe32786ced6fcd41..81b0e17a4bc5022ea757f03c2546808148d6e957 100644
+index d6eba1edc368f7623dd97128aea2fd416e05da33..bd5a514aab02a57954c09ea23ffc6359d3ebf31b 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -155,4 +155,9 @@ public class PurpurWorldConfig {
+@@ -157,4 +157,9 @@ public class PurpurWorldConfig {
          villagerBrainTicks = getInt("mobs.villager.brain-ticks", villagerBrainTicks);
          villagerUseBrainTicksOnlyWhenLagging = getBoolean("mobs.villager.use-brain-ticks-only-when-lagging", villagerUseBrainTicksOnlyWhenLagging);
      }

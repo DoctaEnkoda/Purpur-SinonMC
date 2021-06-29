@@ -17,6 +17,10 @@ Purpur is a drop-in replacement for [Paper](https://github.com/PaperMC/Paper) se
 
 </div>
 
+## WARNING
+I continue to maintain for my server!
+I DO NOT GUARANTEE ANY SUPPORT!
+
 ## Contact
 [![Join us on Discord](https://img.shields.io/discord/685683385313919172.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/mtAAnkk)
 

@@ -18,7 +18,7 @@ index 9ba8ae49e18fb8714b434715bd669b8e22004cd7..c0c87d0dc8d6f02597219cd6a74e6ed7
  
              if (iblockdata1 != null && world.getType(blockposition.up()).isAir()) {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 3d3e4e686cd74145b002b2df276e61762697918b..e082de2fdbd4803f5c79699b813062291f8e2bb7 100644
+index ae8f13badece774dc33a52723ea84246b74d3096..b1ab57aaf503fbd3ed2dddb7d4634c1918507924 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -469,6 +469,16 @@ public class PurpurWorldConfig {

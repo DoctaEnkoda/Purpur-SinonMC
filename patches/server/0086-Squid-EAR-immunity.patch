@@ -5,10 +5,10 @@ Subject: [PATCH] Squid EAR immunity
 
 
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index cd9970db68b6c2f358115b616c36f52ad324fc90..86578f20429aa6bf5f3de1233c6287ce26be9827 100644
+index 4bc92c69ae95c3fbced29ebc74abd446427555ec..d9a0bd965745754498bf4ea514f8a453d416b36c 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -499,6 +499,11 @@ public class PurpurWorldConfig {
+@@ -501,6 +501,11 @@ public class PurpurWorldConfig {
          snowGolemPutPumpkinBack = getBoolean("mobs.snow_golem.pumpkin-can-be-added-back", snowGolemPutPumpkinBack);
      }
  

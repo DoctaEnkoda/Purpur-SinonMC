@@ -52,10 +52,10 @@ index b47f71ca1f1c8bbd1a521836d9cb5d676a33ec76..63a6b1820f60db9eea49a3a589dd50ad
      protected void initPathfinder() {
          this.goalSelector.a(1, new PathfinderGoalFloat(this));
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 81b0e17a4bc5022ea757f03c2546808148d6e957..638ee71a78d9e75de6ddd7f0aec67a023bb8c06a 100644
+index bd5a514aab02a57954c09ea23ffc6359d3ebf31b..11ae72c231ca7dbcb3999769bc3c20ee1f7b5e3f 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -113,6 +113,11 @@ public class PurpurWorldConfig {
+@@ -115,6 +115,11 @@ public class PurpurWorldConfig {
          turtleEggsBreakFromMinecarts = getBoolean("blocks.turtle_egg.break-from-minecarts", turtleEggsBreakFromMinecarts);
      }
  

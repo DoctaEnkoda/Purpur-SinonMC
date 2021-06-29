@@ -27,7 +27,7 @@ index 618f8735fe16f0490a321c447536c2558fcb67e3..45995a49dc7d441e82c1fbd043bf6249
  
      public float a(Explosion explosion, IBlockAccess iblockaccess, BlockPosition blockposition, IBlockData iblockdata, Fluid fluid, float f) {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 9fcc63a2f4a4c363ace85087665bf3a978d3d648..55366240f249c05cf3d40eaf29f2cd21cd86cd07 100644
+index 9589fd71ab233b8580ec24233f98cd52280d43dd..9d141a778385cfbfc12f6c8f76e70e82a4d4b809 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -202,6 +202,7 @@ public class PurpurWorldConfig {

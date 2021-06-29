@@ -26,10 +26,10 @@ index f7b210e6d60533d9faf60183a80a562b25f945d0..926e1344a8db4b18caebae77096c2600
          } else {
              return effectRange;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index f27c55d8d6dabe7d2cbaf6ab01e1a484e1d96f53..69b158b2f0f6d3c11144e5b312ca92d970c791a3 100644
+index 2d54c9324a070af742438e91d60252c739f43cc5..b6aa2cfa88ad64a7b790de995fe62f5011bb5087 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -511,6 +511,17 @@ public class PurpurWorldConfig {
+@@ -513,6 +513,17 @@ public class PurpurWorldConfig {
          anvilAllowColors = getBoolean("blocks.anvil.allow-colors", anvilAllowColors);
      }
  

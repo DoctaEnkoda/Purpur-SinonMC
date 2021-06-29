@@ -22,10 +22,10 @@ index c484e27650364b6537fe6b2e8e14de98382b86a3..096a7b76e0ae42ba8b859159e20fb72e
              return false;
          } else {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index accfdc659f97fb75387776326f4d1b6bd1742aaf..cb20d4cccbaf52d71df7e1e4f877f6938f2969e3 100644
+index 4be825cc31c65a235e95f597388e8f4bbf24878d..40a826b6a87ee17b3121b58bcd8430bab84b3b27 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -495,8 +495,12 @@ public class PurpurWorldConfig {
+@@ -497,8 +497,12 @@ public class PurpurWorldConfig {
      }
  
      public boolean snowOnBlueIce = true;

@@ -78,10 +78,10 @@ index 69044827ed6b34924ffd89a977afa06df0dcefc3..6fab69bf5800ef8a37f29c3b6b210305
          this.goalSelector.a(8, new PathfinderGoalRandomStrollLand(this, 0.35D));
          this.goalSelector.a(9, new PathfinderGoalInteract(this, EntityHuman.class, 3.0F, 1.0F));
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index e82485ee1270ce83ccc93825d795743d4ead23a1..2eaef857f474c05ef1b4aac4870222d2464da949 100644
+index a529dc3e1986a02ed36d1f929680253a6f89de81..c9a044226657f1a7434fd87f48fa3339301eeb3f 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -320,10 +320,17 @@ public class PurpurWorldConfig {
+@@ -322,10 +322,17 @@ public class PurpurWorldConfig {
      public int villagerBrainTicks = 1;
      public boolean villagerUseBrainTicksOnlyWhenLagging = true;
      public boolean villagerFarmingBypassMobGriefing = false;

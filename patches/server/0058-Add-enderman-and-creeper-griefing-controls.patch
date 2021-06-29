@@ -47,10 +47,10 @@ index e993b1849beb60515c51ee4f37617faab63ca223..6a5593ff735a9e0486d7ed9b3afb4f44
          }
  
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 0a6255422a5d22e84cc1048caf7ca964a168b7fe..8033348257c0fcc6f3c1c376b6fb343c414618c5 100644
+index 3458f4172691d07db4031ab48b58bffcd35aa4e3..067c9180c3908b8500acc6868ee04586129e4e11 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -225,8 +225,10 @@ public class PurpurWorldConfig {
+@@ -227,8 +227,10 @@ public class PurpurWorldConfig {
          cowFeedMushrooms = getInt("mobs.cow.feed-mushrooms-for-mooshroom", cowFeedMushrooms);
      }
  
@@ -61,7 +61,7 @@ index 0a6255422a5d22e84cc1048caf7ca964a168b7fe..8033348257c0fcc6f3c1c376b6fb343c
          creeperChargedChance = getDouble("mobs.creeper.naturally-charged-chance", creeperChargedChance);
      }
  
-@@ -235,6 +237,11 @@ public class PurpurWorldConfig {
+@@ -237,6 +239,11 @@ public class PurpurWorldConfig {
          enderDragonAlwaysDropsFullExp = getBoolean("mobs.ender_dragon.always-drop-full-exp", enderDragonAlwaysDropsFullExp);
      }
  

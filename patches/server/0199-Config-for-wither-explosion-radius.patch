@@ -18,10 +18,10 @@ index 616b5267d1d94b2be37ec48983b45e4478502fb5..052cffb156e4e6f31df3935fd8312eb3
  
              if (!event.isCancelled()) {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 9ad9d80331ea52c08500cd9155ba6fdc1bc22a3a..3d3e4e686cd74145b002b2df276e61762697918b 100644
+index cd5356e8fcb17846184bc53d42a094daa7a8a349..ae8f13badece774dc33a52723ea84246b74d3096 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -1913,6 +1913,7 @@ public class PurpurWorldConfig {
+@@ -1915,6 +1915,7 @@ public class PurpurWorldConfig {
      public int witherHealthRegenDelay = 20;
      public double witherMaxHealth = 300.0D;
      public boolean witherCanRideVehicles = false;
@@ -29,7 +29,7 @@ index 9ad9d80331ea52c08500cd9155ba6fdc1bc22a3a..3d3e4e686cd74145b002b2df276e6176
      private void witherSettings() {
          witherRidable = getBoolean("mobs.wither.ridable", witherRidable);
          witherRidableInWater = getBoolean("mobs.wither.ridable-in-water", witherRidableInWater);
-@@ -1931,6 +1932,7 @@ public class PurpurWorldConfig {
+@@ -1933,6 +1934,7 @@ public class PurpurWorldConfig {
          }
          witherMaxHealth = getDouble("mobs.wither.attributes.max_health", witherMaxHealth);
          witherCanRideVehicles = getBoolean("mobs.wither.can-ride-vehicles", witherCanRideVehicles);

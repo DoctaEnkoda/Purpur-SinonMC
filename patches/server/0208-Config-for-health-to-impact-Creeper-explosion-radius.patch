@@ -21,10 +21,10 @@ index 27d5e9fc5ec1396e95180fc14e8a61b030cfd1e6..d2ae28bb1a2db6dde2aa7c95589656b6
              if (!event.isCancelled()) {
                  this.killed = true;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index b8622f687b4fd70aaee5fa44cc50b8ee38582582..5659e75177f3c5acb935b0f6dc0b720853602108 100644
+index c5f44191b6f770ff1fee4dfaeda23cab34af4310..d16cb392125b21536c2f5d3ca0fcdae5db9f7b6a 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -830,6 +830,7 @@ public class PurpurWorldConfig {
+@@ -832,6 +832,7 @@ public class PurpurWorldConfig {
      public boolean creeperRidable = false;
      public boolean creeperRidableInWater = false;
      public boolean creeperExplodeWhenKilled = false;
@@ -32,7 +32,7 @@ index b8622f687b4fd70aaee5fa44cc50b8ee38582582..5659e75177f3c5acb935b0f6dc0b7208
      public boolean creeperAllowGriefing = true;
      public double creeperChargedChance = 0.0D;
      public double creeperMaxHealth = 20.0D;
-@@ -837,6 +838,7 @@ public class PurpurWorldConfig {
+@@ -839,6 +840,7 @@ public class PurpurWorldConfig {
          creeperRidable = getBoolean("mobs.creeper.ridable", creeperRidable);
          creeperRidableInWater = getBoolean("mobs.creeper.ridable-in-water", creeperRidableInWater);
          creeperExplodeWhenKilled = getBoolean("mobs.creeper.explode-when-killed", creeperExplodeWhenKilled);

@@ -40,10 +40,10 @@ index 7af455e5472dc2b6ed177494a9da86c59c6ede5f..379782d5dcb212419c8df2a9a534749b
                  }
  
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index c2314380e7064459dd104b09b900c5a28b592b71..82da1dd5bb8b02c948be51fa941d3b31a3f0dc20 100644
+index c26367cd6f089e60f369aaa394907dc1a9bd3158..f7d1cf14f099617f3a129764ad7bc64b79ecbd9f 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -2047,6 +2047,15 @@ public class PurpurWorldConfig {
+@@ -2049,6 +2049,15 @@ public class PurpurWorldConfig {
          imposeTeleportRestrictionsOnGateways = getBoolean("gameplay-mechanics.impose-teleport-restrictions-on-gateways", imposeTeleportRestrictionsOnGateways);
      }
  

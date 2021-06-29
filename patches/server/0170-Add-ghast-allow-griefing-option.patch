@@ -38,10 +38,10 @@ index 61f06eacb4ea4ef869b60c9014cc23b25583eead..627915ee205fdcc93c5424ad7d7ea057
              // CraftBukkit start - fire ExplosionPrimeEvent
              ExplosionPrimeEvent event = new ExplosionPrimeEvent((org.bukkit.entity.Explosive) this.getBukkitEntity());
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 266b64abb949fca2cc667395d175c962c55435db..23f7a3af8f92fd6e89601b0e1b4b2d1635dfe0b0 100644
+index 08492fbdef0e4accc38257094127882344be1ce1..2f654527f39a9c6486659acecc654810d45fb23c 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -926,6 +926,7 @@ public class PurpurWorldConfig {
+@@ -928,6 +928,7 @@ public class PurpurWorldConfig {
      public boolean ghastRidable = false;
      public boolean ghastRidableInWater = false;
      public double ghastMaxY = 256D;
@@ -49,7 +49,7 @@ index 266b64abb949fca2cc667395d175c962c55435db..23f7a3af8f92fd6e89601b0e1b4b2d16
      public double ghastMaxHealth = 10.0D;
      private void ghastSettings() {
          ghastRidable = getBoolean("mobs.ghast.ridable", ghastRidable);
-@@ -936,6 +937,7 @@ public class PurpurWorldConfig {
+@@ -938,6 +939,7 @@ public class PurpurWorldConfig {
              set("mobs.ghast.attributes.max-health", null);
              set("mobs.ghast.attributes.max_health", oldValue);
          }

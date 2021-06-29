@@ -44,10 +44,10 @@ index 9ffac9aa79dee1b6dd6eeb8483b5a81416c11d9b..528161748472b0fb84718268800864e9
  
              //this.bossBattle.setProgress(this.getHealth() / this.getMaxHealth()); // Paper - Moved down
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 55366240f249c05cf3d40eaf29f2cd21cd86cd07..db9deac5b43626b264f1237d8a2d2535d7bb639b 100644
+index 9d141a778385cfbfc12f6c8f76e70e82a4d4b809..091bba00d66c708f783adf77d7c9cec4838b2490 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -979,10 +979,21 @@ public class PurpurWorldConfig {
+@@ -981,10 +981,21 @@ public class PurpurWorldConfig {
      public boolean witherRidable = false;
      public boolean witherRidableInWater = false;
      public double witherMaxY = 256D;

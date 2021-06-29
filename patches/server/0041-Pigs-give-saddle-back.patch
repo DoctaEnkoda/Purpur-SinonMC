@@ -28,10 +28,10 @@ index 676ca381a5e111fc15f319e73504e4e60dbf0d2b..1a540e41e6161d011ca4ed30c68ae9df
              }
  
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 277cc8361e8faf54b95be1e9f1467a97de14ecc4..5ac1aba522151c42255caf9d29c5b780218ccd32 100644
+index 3af2d90ff182a3297c131c7fad9631e52bca76a5..b8b5dca1f56ee2eadd6222a2cfaed957bc78c3a2 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -188,6 +188,11 @@ public class PurpurWorldConfig {
+@@ -190,6 +190,11 @@ public class PurpurWorldConfig {
          ironGolemCanSwim = getBoolean("mobs.iron_golem.can-swim", ironGolemCanSwim);
      }
  

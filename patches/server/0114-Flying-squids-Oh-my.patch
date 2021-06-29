@@ -38,10 +38,10 @@ index 777c3bcf267d6cf31300588826d3af6b55cab350..7ec3e5d136cbb708b3bb29aa79bdd401
                  float f1 = MathHelper.cos(f) * 0.2F;
                  float f2 = -0.1F + this.b.getRandom().nextFloat() * 0.2F;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index a9f4732ece4764cabb1ae7b55fa9c273996f7d9d..9a18d3612d38cdd3d85cc69fba6df355b6cc6829 100644
+index a3a90a4eb39bf53cb9bfceabf76bd4bac32bdfdf..fc5f0ffd274d2e137d9852a77ee2a6dfbe269730 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -937,10 +937,12 @@ public class PurpurWorldConfig {
+@@ -939,10 +939,12 @@ public class PurpurWorldConfig {
      public boolean squidRidable = false;
      public boolean squidImmuneToEAR = true;
      public double squidOffsetWaterCheck = 0.0D;

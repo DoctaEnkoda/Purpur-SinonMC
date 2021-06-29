@@ -18,7 +18,7 @@ index 0ee99a2c9a966eaaaf09879cce2f54bc68eb3151..8c74adf071e1edb640b3f2375bc92567
          } else {
              this.setLeftHanded(false);
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 1ea011a2fbf6b6d2b7f9ff59e86303d17d130831..5e3b23d50b6e8494066c71bdf7c14edc4a4a3716 100644
+index fef52ea09f6b1f95314f45b61525c8cfc66f7ce8..c158752ba4d187513dc1149a7f2d6dd5377978c5 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -163,8 +163,10 @@ public class PurpurWorldConfig {

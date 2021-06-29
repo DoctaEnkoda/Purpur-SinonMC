@@ -59,10 +59,10 @@ index 6fab69bf5800ef8a37f29c3b6b2103051f36fedf..8df4d985e3124ddc1643da8385b15348
      @Override
      public EntityAgeable createChild(WorldServer worldserver, EntityAgeable entityageable) {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 2eaef857f474c05ef1b4aac4870222d2464da949..9922ca6bd7d856eea182b8dd3c210e5f726ef180 100644
+index c9a044226657f1a7434fd87f48fa3339301eeb3f..9f2b6e7448cbd1f2367f185513e696cae805c427 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -319,17 +319,21 @@ public class PurpurWorldConfig {
+@@ -321,17 +321,21 @@ public class PurpurWorldConfig {
  
      public int villagerBrainTicks = 1;
      public boolean villagerUseBrainTicksOnlyWhenLagging = true;

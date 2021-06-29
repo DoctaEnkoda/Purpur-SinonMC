@@ -338,10 +338,10 @@ index 16c0c960aa1e4d35093b810c7648b5638175e106..e20b26ae0435c593218541eba6c68ef2
  
              return entityliving != null ? EntityPhantom.this.a(EntityPhantom.this.getGoalTarget(), PathfinderTargetCondition.a) : false;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index a12c2ae8291114f17bbb05761272bf724f848b1c..3aec221db2cd425bc5188979bb0fc0625ca40f4a 100644
+index 34edaf076efc685c929d76d8ad68e49b20463fbe..ee6e216f4e1d147aa0d3c4522fd2f008c9323a27 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -395,6 +395,15 @@ public class PurpurWorldConfig {
+@@ -397,6 +397,15 @@ public class PurpurWorldConfig {
          ironGolemCanSwim = getBoolean("mobs.iron_golem.can-swim", ironGolemCanSwim);
      }
  

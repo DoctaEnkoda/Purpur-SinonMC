@@ -18,7 +18,7 @@ index ab0e16b8f659ff86f022fef210b97dfa59206b0c..7d0c5d28597c51d332146a82df06ba51
          })) {
              // CraftBukkit start
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index bb3c5d34b58ccf9bbaa1102e36b82a56f0dda7e3..c87ce9aed539f382e91fcfae956339068a618b79 100644
+index 66f0ba2fd8a857c7242398ea0af383dc8544a630..56d83c54d67c8add25e5e711d0bda1033cc1338c 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -334,6 +334,7 @@ public class PurpurWorldConfig {

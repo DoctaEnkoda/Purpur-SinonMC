@@ -68,10 +68,10 @@ index 96d0524482281f8570464962c0fd5319199440d7..a87a2fa507dc3bd6d9979db5868e7ef6
      @Override
      public PacketPlayOutTileEntityData getUpdatePacket() {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index ea95a4116371d58eb36be51093af7f0fa28e3dfd..b67f87f38d0ff99ff62d2103ecc737317a435102 100644
+index b6aec5aa4b0d817da8727daad0a1ec85b5d1e958..970d8194528c645d7cd833ecfa9b86ee7f98bb28 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -109,8 +109,10 @@ public class PurpurWorldConfig {
+@@ -111,8 +111,10 @@ public class PurpurWorldConfig {
          });
      }
  

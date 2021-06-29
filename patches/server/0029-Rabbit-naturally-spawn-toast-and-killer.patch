@@ -37,10 +37,10 @@ index dcbb07fb6ab799d4526a2da0614c193c7abba715..180fc927074dc683ad4d482a00dd4e04
          int i = this.random.nextInt(100);
  
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 638ee71a78d9e75de6ddd7f0aec67a023bb8c06a..6dcfbebd850d71587da5a78a3acf09d8ae413072 100644
+index 11ae72c231ca7dbcb3999769bc3c20ee1f7b5e3f..d688493acdc4647e2d806cb331c7ee8806dc68f1 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-@@ -154,6 +154,13 @@ public class PurpurWorldConfig {
+@@ -156,6 +156,13 @@ public class PurpurWorldConfig {
          illusionerMaxHealth = getDouble("mobs.illusioner.attributes.max-health", illusionerMaxHealth);
      }
  

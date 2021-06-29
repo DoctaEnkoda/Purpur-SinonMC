@@ -17,7 +17,7 @@ index 5e2c13bd6e52ffe182ef034e05ba6fe1cb301005..01839c7319e175477ded7001e00e5937
              } else {
                  return EntityBoat.EnumStatus.IN_AIR;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index d5095a9b20118bf9c35346fce95a446254872832..06c6e181b753a840e0060539b6b0387a7a1511dc 100644
+index 6ca18d23a7ac547c332ee088c3d9a90df2a868c5..a5e1246e70b53075dde56631b20a6fdc7c7fe663 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -146,6 +146,7 @@ public class PurpurWorldConfig {
