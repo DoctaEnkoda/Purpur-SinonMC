@@ -46,10 +46,10 @@ index 4a70d657fd83627e8d66b52cb5f87381b43ad76a..af69023b241560031f6aa116561d7407
      // Purpur end
  }
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index 3fa4d18d7a1e2d351fbe8e02d1e749587f98c2a2..bfe4f7ed53620510b52d4f01c5ea2a3f726942d8 100644
+index 254bb64037f4e6a8cf39b1630fc062fb919f4b0b..5a6ca7bb3dbb56d60258a53114f378bf7fa6ddfe 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-@@ -410,9 +410,14 @@ public final class CraftMagicNumbers implements UnsafeValues {
+@@ -411,9 +411,14 @@ public final class CraftMagicNumbers implements UnsafeValues {
          Preconditions.checkNotNull(item, "null cannot be serialized");
          Preconditions.checkArgument(item.getType() != Material.AIR, "air cannot be serialized");
  
@@ -66,7 +66,7 @@ index 3fa4d18d7a1e2d351fbe8e02d1e749587f98c2a2..bfe4f7ed53620510b52d4f01c5ea2a3f
          try {
              net.minecraft.nbt.NBTCompressedStreamTools.writeNBT(
                  compound,
-@@ -425,26 +430,58 @@ public final class CraftMagicNumbers implements UnsafeValues {
+@@ -426,26 +431,58 @@ public final class CraftMagicNumbers implements UnsafeValues {
          return outputStream.toByteArray();
      }
  
