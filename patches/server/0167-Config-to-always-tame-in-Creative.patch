@@ -59,7 +59,7 @@ index 090903fbc8f6cd1522c7afb358f708f5ae3395f4..884a3f03c73efb8fb0863976615fba5e
                      this.navigation.o();
                      this.setGoalTarget((EntityLiving) null);
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 6fe1cfbd92b8c19009dbe32446fcd35504943439..c73a4a9e7aa8d13c534b4090d7f58a944639f369 100644
+index 456f5e1e59baab839ae7e0767d74c78c293e5d55..47eda9b195fc69bdc2b19c0115da81594de24aab 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -299,6 +299,7 @@ public class PurpurWorldConfig {

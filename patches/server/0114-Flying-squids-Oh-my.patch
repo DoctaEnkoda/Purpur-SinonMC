@@ -38,7 +38,7 @@ index 777c3bcf267d6cf31300588826d3af6b55cab350..7ec3e5d136cbb708b3bb29aa79bdd401
                  float f1 = MathHelper.cos(f) * 0.2F;
                  float f2 = -0.1F + this.b.getRandom().nextFloat() * 0.2F;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index a3a90a4eb39bf53cb9bfceabf76bd4bac32bdfdf..fc5f0ffd274d2e137d9852a77ee2a6dfbe269730 100644
+index 4c45282bc3e21464079f1aa5afe7a575d2891978..c24e92270ad6fc8dc4535dc682abe5c398db5eb8 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -939,10 +939,12 @@ public class PurpurWorldConfig {

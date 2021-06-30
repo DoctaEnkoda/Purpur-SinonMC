@@ -29,7 +29,7 @@ index 087b18b1fbf9d5e64ddf7f303aaad58bb9e1c3f5..1140fc3cade24320bbc3e09a8664ded2
              event.setCancelled(itemstack == null);
              this.world.getServer().getPluginManager().callEvent(event);
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index beeb6834b24b6b145775617101a176a42df1a172..ec11c4752166cb0d1ba0607c5babc943595bf1b2 100644
+index f4569756f688eebe1d6384a0ad9975bfa964bc99..536f7938a1c4cc1c4ead18a1bb4510062f5c04b0 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -247,6 +247,11 @@ public class PurpurWorldConfig {

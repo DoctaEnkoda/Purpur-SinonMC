@@ -78,7 +78,7 @@ index 72afbf8f537770540e90a2880ea81de137ea10f5..b2d28c2bf0a9e93d38583e2d734c12fe
          return a(enchantment, entityliving, (itemstack) -> {
              return true;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index a5e1246e70b53075dde56631b20a6fdc7c7fe663..89c4f8a0229f716d1875d3230e88ef736098b13b 100644
+index 07b8a55ed899409489fab4abf3214e9043a1b5ed..a00949f3f63ea17aec13fdf1464f4926059ffb9e 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -146,6 +146,7 @@ public class PurpurWorldConfig {

@@ -242,7 +242,7 @@ index dd3c7ad7701ad18ccaf86d73fde7051090ed3d57..e8c6aca70db693250224d1c162e3c268
              return super.b(entityhuman, enumhand);
          }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index dad5e12040bfb4460f4692dca34aa1cc9ed99a34..fe81525b2b4d616941339461a97758b6eb23d038 100644
+index 3745be6727bbe1a3de4688af8606f3cfb504bb4e..b77d24d6a85a79b1af04386a39833e566b792870 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1221,10 +1221,14 @@ public class PurpurWorldConfig {

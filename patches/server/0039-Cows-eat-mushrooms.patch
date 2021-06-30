@@ -139,7 +139,7 @@ index 1b43688ad232620410aa924cef02b54630ab1313..962dde5fcc617bc39b7d06a1e295370b
      public EntityCow createChild(WorldServer worldserver, EntityAgeable entityageable) {
          return (EntityCow) EntityTypes.COW.a((World) worldserver);
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 6d9bc5ccb970fbb0a6865b65a0131230a9348223..3af2d90ff182a3297c131c7fad9631e52bca76a5 100644
+index 08c1aeeffe10664164e73bcc8db1bba5a948f9ae..2ac6236c639f894a87acf54c968c111a87d03f98 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -134,6 +134,11 @@ public class PurpurWorldConfig {

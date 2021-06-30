@@ -57,7 +57,7 @@ index d049aac0208386198d1da4e9470e64898d27b1c9..27d5e9fc5ec1396e95180fc14e8a61b0
  
      private void createEffectCloud() {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index ae72db5c76c7b69964bb4b5890a6f403f8d8e961..8349f29e9e14a79a2229e4017571e80882a40e35 100644
+index b276cd1cb24c5fd679bf93089a733b10e9222b08..641452b1749ca6ea3da8c0eb5b14518ebeaa8fb5 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -759,12 +759,14 @@ public class PurpurWorldConfig {

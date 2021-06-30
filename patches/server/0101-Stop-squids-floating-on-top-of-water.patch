@@ -51,7 +51,7 @@ index 1f5f3e0d209426b97e32b82dd15176b800f85816..e6757b22497c6e274c3999d58671653e
      protected void initPathfinder() {
          this.goalSelector.a(0, new EntitySquid.PathfinderGoalSquid(this));
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 03bd453fa11e8fb70dd72feecfc55efba628940e..61a4835b43402f9958f37e73472948160d5b2341 100644
+index 55c701b44a9f5988e90f0c2fa6aae01ee95b6812..126d16dafe53fc6cf71d56d2cdfde19a1a359220 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -559,8 +559,10 @@ public class PurpurWorldConfig {

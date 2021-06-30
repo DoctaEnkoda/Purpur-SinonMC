@@ -50,7 +50,7 @@ index 10ee8a0a717354f50b29e7ebeab0ee2aa7bf42f7..d785066e2a52699c18315f7244d80db6
 +    // Purpur end
  }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 88d7077c855d4ef21af666a632191ff93b10404f..fef52ea09f6b1f95314f45b61525c8cfc66f7ce8 100644
+index 19329ee49f1ea54dcacadeb4209697d35694b9a5..ebbe20fe729004fbe2c40f6ea5d19fe09c021852 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1,6 +1,7 @@

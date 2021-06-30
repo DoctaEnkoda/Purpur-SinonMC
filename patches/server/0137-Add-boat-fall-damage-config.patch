@@ -27,7 +27,7 @@ index 7b11b5fedd0dd6b340362c26b4ce73b93bf57b8b..c631e4d27518a1382869c184af41bec9
  
              if (!flag && isSpawnInvulnerable() && damagesource != DamageSource.OUT_OF_WORLD) { // Purpur
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index c158752ba4d187513dc1149a7f2d6dd5377978c5..752355d46e7744956169243a7c03619709b56cce 100644
+index 202946cdc50385612b0323552b62563102fd59d0..4371ef8bb3c5029f845d5974308cf19794b03a3b 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -268,6 +268,7 @@ public class PurpurWorldConfig {

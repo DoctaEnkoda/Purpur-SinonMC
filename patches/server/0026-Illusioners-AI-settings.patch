@@ -25,7 +25,7 @@ index fee9a5140f097225b5da58b18bfbd528dffdc77b..cb092bee9d6827d4b0276bfa9b033cf7
      protected void initPathfinder() {
          super.initPathfinder();
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 8a278cd92f02bc237d8d2445bf4f709950af7906..d6eba1edc368f7623dd97128aea2fd416e05da33 100644
+index 9ec766545a66e0953ef9b3e28dd118c1f1171f0b..3925997982df210d0bda3bb508b2451d0c9e3a61 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -137,6 +137,20 @@ public class PurpurWorldConfig {

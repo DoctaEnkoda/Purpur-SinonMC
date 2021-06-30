@@ -69,7 +69,7 @@ index 0055a96b51a1d38d31e129c417c97bcfc9d0b745..31237773907341ee64c71507b5e1bf24
  
      static void a(ISourceBlock isourceblock, Entity entity, EnumDirection enumdirection) {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 6c7cda021f2209afc8f18d32c576abd794a37486..88541db87ecac5cebb1a2b530b95e3c0b6c47917 100644
+index 05e1726894a2f92c8231e989ba3f99f415614ece..03404cca2cece133ac5b2b3978eead5c751c1138 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -299,8 +299,10 @@ public class PurpurWorldConfig {

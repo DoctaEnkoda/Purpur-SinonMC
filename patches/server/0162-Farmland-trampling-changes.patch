@@ -54,7 +54,7 @@ index 386641173bb758c1ba1e80071f68813fec012a93..0c7422d9b041341b12f1b8796236b872
              if (CraftEventFactory.callEntityChangeBlockEvent(entity, blockposition, Blocks.DIRT.getBlockData()).isCancelled()) {
                  return;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index ed5d484ff6c07f1418409ff0bd39a5f0809d0dd9..46cbe3d63e355b68629279a22297b7193e636fd8 100644
+index ed70491407a495c2b13290a758fa70fbe444d2ce..abae50822d6623ef6d0659f603f8b5c238fb51ae 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -473,10 +473,16 @@ public class PurpurWorldConfig {

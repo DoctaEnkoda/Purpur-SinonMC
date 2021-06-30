@@ -26,7 +26,7 @@ index c2a35fac1065b2b67a0a3ce94432246892f6f4a5..5f4a9ef27ab1a177a048fbf376d1e353
  
      protected ItemCooldown i() {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 94223e54cc1449511d86661d073281f04143922a..fd36f617c5f17d786d6542f4e4f9aec4ddbacab6 100644
+index 8386f04fbd3eb40bf2f5d8a585560081f65e7fe6..c61fcdf9cb2b4b6e67005f26a49017b14c9f56f5 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -356,6 +356,19 @@ public class PurpurWorldConfig {

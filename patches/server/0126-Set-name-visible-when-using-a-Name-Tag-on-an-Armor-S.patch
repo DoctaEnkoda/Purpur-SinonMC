@@ -29,7 +29,7 @@ index b9b2b27e534ba87a1aae3c521f393a066a18a199..4f4e9ebb9af4970fe920a540d40dbc56
                      ((EntityInsentient) newEntityLiving).setPersistent();
                  }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 8b952a8ebb8934dac58b1740b33ddc005f9db26b..f2587aa269cc24acfe1b4778909089ab46b33431 100644
+index f6d175eb8b9ca793c8562ba3f3333f7dbfe3d6e2..5c89361dc191201b5c1115c34a5ba125e97eefa6 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -84,9 +84,11 @@ public class PurpurWorldConfig {

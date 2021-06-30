@@ -45,7 +45,7 @@ index 31eabc40562462f98cc039a55453f200ca4eaa5c..56e81e3e2bbe87d28440ddb9a6285c78
              entity.portalWorld = ((WorldServer)world);
              entity.portalBlock = blockposition.immutableCopy();
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 7dddf10af639606eab15bcf78042b7fa6a92f08b..73e33e4935a1a477a904b83055fe9b2dd7b18705 100644
+index f045b3de837d4d473e320a8b77e2385596bbf31a..5e0c8c2bb05ebb9bc5a9be7e6f501540f33e7839 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -555,6 +555,11 @@ public class PurpurWorldConfig {

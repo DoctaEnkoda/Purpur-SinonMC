@@ -40,7 +40,7 @@ index 6dbd54c44ac88025464f78e72069c538d9f43dc3..f0348960e17056ea9dad0f08fe010a7c
  
                  ((EntityPlayer) entityhuman).playerConnection.sendPacket(new PacketPlayOutUpdateHealth(((EntityPlayer) entityhuman).getBukkitEntity().getScaledHealth(), entityhuman.getFoodData().foodLevel, entityhuman.getFoodData().saturationLevel));
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index c9f69395504aa62e004bb8ecfd6ad8c7445fbfbc..2d54c9324a070af742438e91d60252c739f43cc5 100644
+index d78b238cee9732280054bbea2be5d25832bc0aa4..68ef14ab106d351e74308ce287b63e183e8fc412 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -2191,4 +2191,19 @@ public class PurpurWorldConfig {

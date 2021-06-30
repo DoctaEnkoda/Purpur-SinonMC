@@ -31,7 +31,7 @@ index 41733979141ed62523e9058a3f4c4ea753bfbc64..757e3b56221eca5449ded2d94b93cffe
                  blockposition = blockposition.down();
              }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index ff39751fd15ac321c927177ae553c9c274af967c..96ab5ad51d23944ad40353d01862bc5f2d65afa9 100644
+index 9458b3f1c46be6108e166d0fb96606380915ea51..1732d4f7f02828037c2ea9e760e4f43a72ba2762 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1421,6 +1421,7 @@ public class PurpurWorldConfig {

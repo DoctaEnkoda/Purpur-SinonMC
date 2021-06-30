@@ -97,7 +97,7 @@ index 49f26d487229a732902d5bf48d305b0864e90d63..f25f5ced218555af0d62844a78842cfc
          this.datawatcher.set(EntityPolarBear.bo, flag);
      }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 38a1e048ccb85f11e3a8a93e027c1b9f71632d93..17cfbb5e694e53856ede7c4fd0ad9e76e1322197 100644
+index c30b20c902370f555659bde4012d3eef5492089d..a9879ec661aed822205a90e73f012dc427b8c0e4 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -166,6 +166,14 @@ public class PurpurWorldConfig {

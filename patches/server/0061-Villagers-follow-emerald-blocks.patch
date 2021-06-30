@@ -78,7 +78,7 @@ index 69044827ed6b34924ffd89a977afa06df0dcefc3..6fab69bf5800ef8a37f29c3b6b210305
          this.goalSelector.a(8, new PathfinderGoalRandomStrollLand(this, 0.35D));
          this.goalSelector.a(9, new PathfinderGoalInteract(this, EntityHuman.class, 3.0F, 1.0F));
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index a529dc3e1986a02ed36d1f929680253a6f89de81..c9a044226657f1a7434fd87f48fa3339301eeb3f 100644
+index 937f19e2b4c18f1628fba1f72bde2154fc487bef..edb6841955fd74dc668638d95a5c56bbd47a1165 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -322,10 +322,17 @@ public class PurpurWorldConfig {

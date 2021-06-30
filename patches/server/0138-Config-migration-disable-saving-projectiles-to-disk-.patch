@@ -36,7 +36,7 @@ index c68ef95730c9c0b2f81be1cfbbc849e0f1c505fd..8a1311eeb2504bc9708403686518ea38
      public static String afkBroadcastBack = "§e§o%s is no longer AFK";
      public static String afkTabListPrefix = "[AFK] ";
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 752355d46e7744956169243a7c03619709b56cce..f9a4f08c7b94b8a6c4ca657a981e1610eaeff881 100644
+index 4371ef8bb3c5029f845d5974308cf19794b03a3b..23e0201f3f095fa7ab4b09b36ffee0f10bcd3179 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1,5 +1,6 @@

@@ -302,7 +302,7 @@ index 390023a7a825eed850a13572b719f47ed534c003..8df2b646df701b4d21f956b9870d7c09
  
      public boolean checkIfLeftOwner() { return this.h(); } // Purpur - OBFHELPER
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index a7d5cc8200989ffee52b974060413bd999032d24..4c601b24d35e9f57fe596fccca1b9f100426738b 100644
+index 5171727a0cf577ba4853d4026f671588d8b103c4..7651ca925744de869cb3fe18f2b6f844cf839d1d 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -209,6 +209,35 @@ public class PurpurWorldConfig {

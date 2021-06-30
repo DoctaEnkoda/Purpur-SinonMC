@@ -17,7 +17,7 @@ toothpick {
     nmsRevision = "R0.1-SNAPSHOT"
 
     upstream = "Paper"
-    upstreamBranch = "origin/master"
+    upstreamBranch = "origin/ver/1.16.5"
 
     server {
         project = projects.purpurServer.dependencyProject

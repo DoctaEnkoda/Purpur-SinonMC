@@ -19,7 +19,7 @@ index a2e0fed960f6dffb0f00c9d6ce91359e3597231c..25c49f6ded334ffb2d0c315569287952
      private int br = Integer.MIN_VALUE;
      private int bs;
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index c94ac58b2b6f5b5800f4128117d98bd22dd02dc7..7e09873640e3d81c6bca69f560d38c85459c9c5b 100644
+index 1c469ef352c46890b809f2e4f329ad44d56b6ff9..0d1a318452011269cad23f12a2d3dab317ebf6db 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -883,6 +883,7 @@ public class PurpurWorldConfig {

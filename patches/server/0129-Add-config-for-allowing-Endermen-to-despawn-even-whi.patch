@@ -21,7 +21,7 @@ index a15dbd76e1d1afae7eb3809ef2e0448d8e2ab8e6..cae2b2139e398dd26e9562636f06e096
  
      static class PathfinderGoalEndermanPickupBlock extends PathfinderGoal {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 60382bbbc0cf7254c5d63c97f005d437d3aae86e..8779ab60eb31f205cd9518a18cac2e5c92ea049f 100644
+index ffdc8d9d0e780ff72acf76283693b6fa04d855c5..8e261cc9bf941e5eb5001009fca9f07378b14495 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -648,10 +648,12 @@ public class PurpurWorldConfig {

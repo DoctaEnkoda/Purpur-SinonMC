@@ -102,7 +102,7 @@ index a3215b1cccf4d00de888ca4696c03ffb6adf7041..cb58d2635650c20da21583ead18e9f38
          this.world = new CraftWorld((WorldServer) this, gen, env);
          this.ticksPerAnimalSpawns = this.getServer().getTicksPerAnimalSpawns(); // CraftBukkit
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 70ecd76b6daee151b63cc88dd925bc55a36b6d25..7465b80149f859ca5b8cc4fa4bf5ffdd777a94cc 100644
+index 1691b86bf41c6526e50a69e59593837f2bba374c..286270e81dcf528baa7aa597eb7fbe3158812d7f 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -265,6 +265,7 @@ public class PurpurWorldConfig {

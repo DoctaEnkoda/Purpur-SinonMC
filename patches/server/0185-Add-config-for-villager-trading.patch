@@ -31,7 +31,7 @@ index f6e0a92037d22de102c42cc1953ea90919bd3a34..03e811e854034c6ca9cd11d35ed0a2db
                      this.openTrade(entityhuman, this.getScoreboardDisplayName(), 1);
                  }
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 56d83c54d67c8add25e5e711d0bda1033cc1338c..c26367cd6f089e60f369aaa394907dc1a9bd3158 100644
+index b30041f87f1b2eeb422c348d9e4f17d1e4492482..86b45e64c61651e2ced09b9736ddc2f35bf0ba74 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1774,6 +1774,7 @@ public class PurpurWorldConfig {

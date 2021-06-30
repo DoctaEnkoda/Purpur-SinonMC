@@ -20985,10 +20985,10 @@ index 295ffab08672d77d88aca368cb5b56f80bc4f1b5..dee4d12a49468d38f077784b219199f0
      @Override
      public boolean teleport(Location location) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index cfe6898dc373fe55a08acf5c90e200061aa7d0fc..ed1bb89ae7b85bf4017315d6189d6cbf595aefe5 100644
+index c845896764cfa29f5d111c674b1a9081bd4993a7..f28f973452ec3eb2d09d0dc1e27e8bb5a04216c1 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-@@ -2265,15 +2265,70 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
+@@ -2266,15 +2266,70 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
          }
      }
  

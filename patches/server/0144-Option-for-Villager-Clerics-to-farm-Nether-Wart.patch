@@ -224,7 +224,7 @@ index 69de7588eebba7557cdaec129f19ec1fc2c675c5..dd9b678481620856fb7eaaa04c3b812c
      public static final VillagerProfession FISHERMAN = a("fisherman", VillagePlaceType.i, SoundEffects.ENTITY_VILLAGER_WORK_FISHERMAN);
      public static final VillagerProfession FLETCHER = a("fletcher", VillagePlaceType.j, SoundEffects.ENTITY_VILLAGER_WORK_FLETCHER);
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 112d54f1471ecbdcd75ed849a265a975dbaa993b..e8f0412dfcb689a58e7ed12bb58ddaed3c6e2f9f 100644
+index beac44d92d8d7125bd4eea4e84ab3466078b4431..6c95050fabbd11df08a0ab46686f1a9d4e84f163 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1138,6 +1138,8 @@ public class PurpurWorldConfig {

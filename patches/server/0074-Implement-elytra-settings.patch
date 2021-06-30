@@ -101,7 +101,7 @@ index 9896477b54cf91a88bdfc3d85018a59193b32859..0711d195c654edef5875f587e391bacf
                          entityhuman.r(20);
                          if (entityhuman.isOnGround()) {
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index 89c4f8a0229f716d1875d3230e88ef736098b13b..c624100265f080c17f12aed335ce480cbdb231a9 100644
+index a00949f3f63ea17aec13fdf1464f4926059ffb9e..ad2209e801631b3e748158ced7533d1d3785924f 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -165,6 +165,19 @@ public class PurpurWorldConfig {

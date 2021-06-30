@@ -23,7 +23,7 @@ index a692b973717ecc56d808039418599a11aedc2c5a..76fe39cf57384602c7422cb340f15ca7
          this.goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 6.0F));
          this.goalSelector.a(4, new PathfinderGoalRandomLookaround(this));
 diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
-index f9a4f08c7b94b8a6c4ca657a981e1610eaeff881..33f8852877635be6eae9403e07bd2cfd6181ebb8 100644
+index 23e0201f3f095fa7ab4b09b36ffee0f10bcd3179..3e07a59768f66b509be4138bcf182d4cb5a6ae03 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 +++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
 @@ -1041,12 +1041,20 @@ public class PurpurWorldConfig {
