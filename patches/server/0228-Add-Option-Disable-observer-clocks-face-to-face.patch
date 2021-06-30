@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: DoctaEnkoda <bierquejason@gmail.com>
+Date: Wed, 30 Jun 2021 22:00:10 +0200
+Subject: [PATCH] Add Option Disable observer clocks face to face
+
+
+diff --git a/src/main/java/net/minecraft/world/level/block/BlockObserver.java b/src/main/java/net/minecraft/world/level/block/BlockObserver.java
+index 291fd45f6f97c561edaaf8b659920d2c3b6aba46..e810b95091d43454da202f6d67e4340195065d0e 100644
+--- a/src/main/java/net/minecraft/world/level/block/BlockObserver.java
++++ b/src/main/java/net/minecraft/world/level/block/BlockObserver.java
+@@ -64,7 +64,10 @@ public class BlockObserver extends BlockDirectional {
+ 
+     @Override
+     public IBlockData updateState(IBlockData iblockdata, EnumDirection enumdirection, IBlockData iblockdata1, GeneratorAccess generatoraccess, BlockPosition blockposition, BlockPosition blockposition1) {
+-        if (iblockdata.get(BlockObserver.FACING) == enumdirection && !(Boolean) iblockdata.get(BlockObserver.b)) {
++
++        if (iblockdata.get(BlockObserver.FACING) == enumdirection && !(Boolean) iblockdata.get(BlockObserver.b)//){ Purpur-Sinon Start
++            && (!generatoraccess.getMinecraftWorld().purpurConfig.disableObserverClocks || !(iblockdata1.getBlock() instanceof BlockObserver) || iblockdata1.get(BlockObserver.FACING).opposite() != enumdirection)) {
++        // Purpur-Sinon End
+             this.a(generatoraccess, blockposition);
+         }
+ 
+diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
+index 9f515551f917c690b55611e01300acf742f781c3..1b849160c0a22c9045c6cc196f75290db017f90b 100644
+--- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
++++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
+@@ -637,6 +637,11 @@ public class PurpurWorldConfig {
+         railActivationRange = getInt("blocks.powered-rail.activation-range", railActivationRange);
+     }
+ 
++    public boolean disableObserverClocks = false;
++    private void observerSettings() {
++        disableObserverClocks = getBoolean("blocks.observer.clock-face-to-face", disableObserverClocks);
++    }
++
+     public boolean respawnAnchorExplode = true;
+     public double respawnAnchorExplosionPower = 5.0D;
+     public boolean respawnAnchorExplosionFire = true;
