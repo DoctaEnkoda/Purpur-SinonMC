@@ -4,6 +4,37 @@ Date: Tue, 18 Feb 2020 20:30:03 -0600
 Subject: [PATCH] Purpur config files
 
 
+diff --git a/pom.xml b/pom.xml
+index 6fd6066b16d4dbf8695be16ec8b2d135d4d04901..4a0922ef102ab08bd4930e3d7dd3a725c2db3ddc 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -68,7 +68,7 @@
+         <dependency>
+             <groupId>it.unimi.dsi</groupId>
+             <artifactId>fastutil</artifactId>
+-            <version>8.2.2</version>
++            <version>8.5.4</version>
+             <scope>provided</scope>
+         </dependency>
+         <dependency>
+@@ -95,7 +95,7 @@
+         <dependency>
+             <groupId>com.google.guava</groupId>
+             <artifactId>guava</artifactId>
+-            <version>21.0</version>
++            <version>30.1.1-jre</version>
+             <scope>compile</scope>
+         </dependency>
+         <!-- bundled with Minecraft, should be kept in sync -->
+@@ -115,7 +115,7 @@
+         <dependency>
+             <groupId>org.yaml</groupId>
+             <artifactId>snakeyaml</artifactId>
+-            <version>1.27</version>
++            <version>1.29</version>
+             <scope>compile</scope>
+         </dependency>
+         <!-- not part of the API proper -->
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
 index f55ae8275c297c4c86215fba8d7197ffe9715879..0888165f2327bad2125d9cbe9b72e3282d44e072 100644
 --- a/src/main/java/org/bukkit/Server.java
