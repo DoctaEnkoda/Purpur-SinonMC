@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Encode42 <me@encode42.dev>
+Date: Wed, 30 Jun 2021 17:31:02 +0200
+Subject: [PATCH] Configurable hunger starvation damage
+
+
+diff --git a/src/main/java/net/minecraft/world/food/FoodMetaData.java b/src/main/java/net/minecraft/world/food/FoodMetaData.java
+index e455b25b0809af15f6fde957121d0110da7eb08f..15a9566dbd855aaa98f62649e27d6911e9e2038f 100644
+--- a/src/main/java/net/minecraft/world/food/FoodMetaData.java
++++ b/src/main/java/net/minecraft/world/food/FoodMetaData.java
+@@ -104,7 +104,7 @@ public class FoodMetaData {
+             ++this.foodTickTimer;
+             if (this.foodTickTimer >= this.starvationRate) { // CraftBukkit - add regen rate manipulation
+                 if (entityhuman.getHealth() > 10.0F || enumdifficulty == EnumDifficulty.HARD || entityhuman.getHealth() > 1.0F && enumdifficulty == EnumDifficulty.NORMAL) {
+-                    entityhuman.damageEntity(DamageSource.STARVE, 1.0F);
++                    entityhuman.damageEntity(DamageSource.STARVE, entityhuman.world.purpurConfig.hungerStarvationDamage);  // Purpur
+                 }
+ 
+                 this.foodTickTimer = 0;
+diff --git a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
+index a52f1e6a6e2bb720d432c9dead09c58bd6191299..9f515551f917c690b55611e01300acf742f781c3 100644
+--- a/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
++++ b/src/main/java/net/pl3x/purpur/PurpurWorldConfig.java
+@@ -125,6 +125,11 @@ public class PurpurWorldConfig {
+         armorstandPlaceWithArms = getBoolean("gameplay-mechanics.armorstand.place-with-arms-visible", armorstandPlaceWithArms);
+     }
+ 
++    public float hungerStarvationDamage = 1.0F;
++    private void hungerSettings() {
++        hungerStarvationDamage = (float) getDouble("hunger.starvation-damage", hungerStarvationDamage);
++    }
++
+     public double minecartMaxSpeed = 0.4D;
+     public boolean minecartPlaceAnywhere = false;
+     public boolean minecartControllable = false;
