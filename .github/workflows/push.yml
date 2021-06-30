@@ -1,4 +1,4 @@
-name: Build Purpur
+name: Build Purpur-SinonMC
 on: [ push ]
 jobs:
   build:
