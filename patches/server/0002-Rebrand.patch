@@ -91,7 +91,7 @@ index ad87b575a0261200b280884e054a59e3ce59c41c..e56ebeaaa12494817d31099eed54ef2c
                  .completer(new ConsoleCommandCompleter(this.server))
                  .option(LineReader.Option.COMPLETE_IN_WORD, true);
 diff --git a/src/main/java/net/minecraft/server/EULA.java b/src/main/java/net/minecraft/server/EULA.java
-index 3bc5cd1e53dd7c94b948e7f57f0dc8e073e349b0..87891161f5b06bb8be0e2016b490484e6daca9d7 100644
+index 3bc5cd1e53dd7c94b948e7f57f0dc8e073e349b0..3963f0eab8eb5df39f9fb76fe19bd215ab908875 100644
 --- a/src/main/java/net/minecraft/server/EULA.java
 +++ b/src/main/java/net/minecraft/server/EULA.java
 @@ -72,7 +72,7 @@ public class EULA {
