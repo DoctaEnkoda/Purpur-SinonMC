@@ -5,7 +5,7 @@ Subject: [PATCH] Purpur config files
 
 
 diff --git a/pom.xml b/pom.xml
-index 6fd6066b16d4dbf8695be16ec8b2d135d4d04901..4a0922ef102ab08bd4930e3d7dd3a725c2db3ddc 100644
+index 6fd6066b16d4dbf8695be16ec8b2d135d4d04901..5d4130c7bb837ca3271993b5749831f44c3ae17c 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -68,7 +68,7 @@
