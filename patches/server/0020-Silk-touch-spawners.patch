@@ -79,7 +79,7 @@ index fc5cc610e7ea584ce72600b9d9f47543265725bb..8e9a25495d76251a86268d3059e2960a
      public static final Item cy = a(Blocks.CHEST, CreativeModeTab.c);
      public static final Item cz = a(Blocks.DIAMOND_ORE, CreativeModeTab.b);
 diff --git a/src/main/java/net/minecraft/world/level/block/BlockMobSpawner.java b/src/main/java/net/minecraft/world/level/block/BlockMobSpawner.java
-index 287dd5f1b2b913df4029966860cd1a426947b187..0812ab270777cd2daea021732f8895888a7cb764 100644
+index 287dd5f1b2b913df4029966860cd1a426947b187..95c702d8ea873a6bd2e26e6fa88a35dfd1ce8749 100644
 --- a/src/main/java/net/minecraft/world/level/block/BlockMobSpawner.java
 +++ b/src/main/java/net/minecraft/world/level/block/BlockMobSpawner.java
 @@ -1,14 +1,35 @@
@@ -171,7 +171,7 @@ index 287dd5f1b2b913df4029966860cd1a426947b187..0812ab270777cd2daea021732f889588
 +    }
 +
 +    private boolean isSilkTouch(World world, ItemStack itemstack) {
-+        return itemstack != null && world.purpurConfig.silkTouchTools.contains(itemstack.getItem()) && EnchantmentManager.getEnchantmentLevel(Enchantments.SILK_TOUCH, itemstack) > 0 && EnchantmentManager.getEnchantmentLevel(Enchantments.SILK_TOUCH, itemstack) >= world.purpurConfig.minimumSilkTouchSpawnerRequire;
++        return itemstack != null && world.purpurConfig.silkTouchTools.contains(itemstack.getItem()) && EnchantmentManager.getEnchantmentLevel(Enchantments.SILK_TOUCH, itemstack) >= world.purpurConfig.minimumSilkTouchSpawnerRequire;
 +    }
 +    // Purpur end
 +
