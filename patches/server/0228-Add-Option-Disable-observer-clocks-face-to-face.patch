@@ -30,7 +30,7 @@ index 9f515551f917c690b55611e01300acf742f781c3..1b849160c0a22c9045c6cc196f75290d
  
 +    public boolean disableObserverClocks = false;
 +    private void observerSettings() {
-+        disableObserverClocks = getBoolean("blocks.observer.clock-face-to-face", disableObserverClocks);
++        disableObserverClocks = getBoolean("blocks.observer.disable-clock", disableObserverClocks);
 +    }
 +
      public boolean respawnAnchorExplode = true;
