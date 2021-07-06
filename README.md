@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://purpur.pl3x.net"><img src="https://repository-images.githubusercontent.com/184300222/14b11480-3303-11eb-8ca4-ea5711d942fb" alt="Purpur"></a>
+<a href="https://purpur.pl3x.net"><img src="https://repository-images.githubusercontent.com/362917525/0dfe8480-d95a-11eb-816d-9685364291b6" alt="Purpur-SinonMC"></a>
 
 ## Purpur
 
