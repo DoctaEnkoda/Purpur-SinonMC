@@ -35,7 +35,7 @@ index 6b461080439dd9ce5b8d34b79d446558bbd5c1f1..19f4403b9f1142c71e7b2c7c0fd5a780
              } else {
                  return EnumInteractionResult.PASS;
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java b/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
-index 7f78f388584899b13ff983f0dc37c679bfb1507e..96d0524482281f8570464962c0fd5319199440d7 100644
+index 2f51a5d9fdc4d73fd2228df7deb878d5880be1d8..fbd3b9bfa51ab6c1de7c2f85cc54c9cdeea4ca45 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
 @@ -132,6 +132,7 @@ public class TileEntitySign extends TileEntity implements ICommandListener { //

@@ -37,7 +37,7 @@ index 8856ee8e0e7a3efda7921c0c8df9a2eb4213b1ce..e8a9c8a7fc4089e48e09afc1638cf1cc
              }
              SignChangeEvent event = new SignChangeEvent(org.bukkit.craftbukkit.block.CraftBlock.at(worldserver, blockposition), this.getPlayer(), lines);
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java b/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
-index 96d0524482281f8570464962c0fd5319199440d7..a87a2fa507dc3bd6d9979db5868e7ef6ea1eddbd 100644
+index fbd3b9bfa51ab6c1de7c2f85cc54c9cdeea4ca45..77f879325f8cf570243c2fb394f08924470e8e28 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
 @@ -1,6 +1,7 @@
