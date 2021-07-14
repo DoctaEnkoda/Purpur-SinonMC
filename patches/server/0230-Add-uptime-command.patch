@@ -5,7 +5,7 @@ Subject: [PATCH] Add uptime command
 
 
 diff --git a/src/main/java/net/minecraft/commands/CommandDispatcher.java b/src/main/java/net/minecraft/commands/CommandDispatcher.java
-index c5babb19a3b4d20c4f9e414d5654d18c570d2b2d..5d479fcb0d0d1a6395862c2216033be2ecf47f0b 100644
+index 427f57c7171e4fe3c948ffca4d194647d07eafb6..bf989dd06a0f40909f0c671fdcbf4102daab7a65 100644
 --- a/src/main/java/net/minecraft/commands/CommandDispatcher.java
 +++ b/src/main/java/net/minecraft/commands/CommandDispatcher.java
 @@ -195,6 +195,7 @@ public class CommandDispatcher {

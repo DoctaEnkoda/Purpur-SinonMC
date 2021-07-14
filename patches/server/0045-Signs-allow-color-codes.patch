@@ -37,7 +37,7 @@ index 8856ee8e0e7a3efda7921c0c8df9a2eb4213b1ce..e8a9c8a7fc4089e48e09afc1638cf1cc
              }
              SignChangeEvent event = new SignChangeEvent(org.bukkit.craftbukkit.block.CraftBlock.at(worldserver, blockposition), this.getPlayer(), lines);
 diff --git a/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java b/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
-index fbd3b9bfa51ab6c1de7c2f85cc54c9cdeea4ca45..77f879325f8cf570243c2fb394f08924470e8e28 100644
+index 7465c689d1677b21be018e3084dc1e2d85f61355..85e7cf4730de2e1acb20c539ab0a526e8ac3931c 100644
 --- a/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
 +++ b/src/main/java/net/minecraft/world/level/block/entity/TileEntitySign.java
 @@ -1,6 +1,7 @@
@@ -48,7 +48,7 @@ index fbd3b9bfa51ab6c1de7c2f85cc54c9cdeea4ca45..77f879325f8cf570243c2fb394f08924
  import javax.annotation.Nullable;
  import net.minecraft.commands.CommandListenerWrapper;
  import net.minecraft.commands.ICommandListener;
-@@ -112,6 +113,18 @@ public class TileEntitySign extends TileEntity implements ICommandListener { //
+@@ -113,6 +114,18 @@ public class TileEntitySign extends TileEntity implements ICommandListener { //
          this.g[i] = null;
      }
  

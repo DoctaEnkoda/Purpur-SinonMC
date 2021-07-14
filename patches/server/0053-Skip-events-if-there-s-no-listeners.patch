@@ -5,10 +5,10 @@ Subject: [PATCH] Skip events if there's no listeners
 
 
 diff --git a/src/main/java/net/minecraft/commands/CommandDispatcher.java b/src/main/java/net/minecraft/commands/CommandDispatcher.java
-index 7e30ec9a08d919d2ae9218ee0a11f77719129f07..b1bfc42b4153b225243ba65e7f937c0314cb39a5 100644
+index 4270a9bbc272706b5a88807d465a32e73d18b90f..ca33fdce6799c8ce20487033eeb5439592bc2003 100644
 --- a/src/main/java/net/minecraft/commands/CommandDispatcher.java
 +++ b/src/main/java/net/minecraft/commands/CommandDispatcher.java
-@@ -368,6 +368,7 @@ public class CommandDispatcher {
+@@ -369,6 +369,7 @@ public class CommandDispatcher {
      }
  
      private void runSync(EntityPlayer entityplayer, Collection<String> bukkit, RootCommandNode<ICompletionProvider> rootcommandnode) {
@@ -16,7 +16,7 @@ index 7e30ec9a08d919d2ae9218ee0a11f77719129f07..b1bfc42b4153b225243ba65e7f937c03
          // Paper end - Async command map building
          new com.destroystokyo.paper.event.brigadier.AsyncPlayerSendCommandsEvent<CommandListenerWrapper>(entityplayer.getBukkitEntity(), (RootCommandNode) rootcommandnode, false).callEvent(); // Paper
          PlayerCommandSendEvent event = new PlayerCommandSendEvent(entityplayer.getBukkitEntity(), new LinkedHashSet<>(bukkit));
-@@ -380,6 +381,7 @@ public class CommandDispatcher {
+@@ -381,6 +382,7 @@ public class CommandDispatcher {
              }
          }
          // CraftBukkit end

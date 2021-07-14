@@ -5,7 +5,7 @@ Subject: [PATCH] Implement TPSBar
 
 
 diff --git a/src/main/java/net/minecraft/commands/CommandDispatcher.java b/src/main/java/net/minecraft/commands/CommandDispatcher.java
-index 0ea56c863a9a1019b36f7f9f9164301aef12637b..4338b459011bf7a083790b7bb76cf1b24471fd19 100644
+index 53ae608fd8e4cba66bb914ef4140278d56e30d83..3410df42031fef41b70166c47950e75f60c9fade 100644
 --- a/src/main/java/net/minecraft/commands/CommandDispatcher.java
 +++ b/src/main/java/net/minecraft/commands/CommandDispatcher.java
 @@ -193,6 +193,7 @@ public class CommandDispatcher {
