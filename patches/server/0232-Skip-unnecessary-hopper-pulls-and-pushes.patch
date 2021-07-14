@@ -1,0 +1,293 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: DoctaEnkoda <bierquejason@gmail.com>
+Date: Wed, 14 Jul 2021 21:38:41 +0200
+Subject: [PATCH] Skip unnecessary hopper pulls and pushes
+
+This patch reduces unnecessary hopper pulls and pushes by skipping them if all of the following conditions are met:
+1) The last attempted pull/push failed.
+2) There are no items/inventory entities to be pulled/pushed from/to.
+3) The state of the hopper has not changed since the last attempted pull/push.
+4) The state of any inventory the hopper can pull/push from/to has not changed since the last attempted pull/push.
+
+If all four of these conditions are met then any pull/push must fail and therefore can be skipped.
+
+On 50k Hopper, With AMD RYZEN 9, without = 35 mspt, now = 15 mspt
+
+diff --git a/src/main/java/net/minecraft/world/level/block/BlockComposter.java b/src/main/java/net/minecraft/world/level/block/BlockComposter.java
+index c0b235d5edf3cd14021696d1b4f76ce3de41f5d5..142a2156f0e294cff40b465d8357091b31aa767c 100644
+--- a/src/main/java/net/minecraft/world/level/block/BlockComposter.java
++++ b/src/main/java/net/minecraft/world/level/block/BlockComposter.java
+@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
+ import net.minecraft.SystemUtils;
+ import net.minecraft.core.BlockPosition;
+ import net.minecraft.core.EnumDirection;
++import net.minecraft.server.MinecraftServer;
+ import net.minecraft.server.level.WorldServer;
+ import net.minecraft.sounds.SoundCategory;
+ import net.minecraft.sounds.SoundEffects;
+@@ -29,6 +30,7 @@ import net.minecraft.world.level.block.state.IBlockData;
+ import net.minecraft.world.level.block.state.properties.BlockProperties;
+ import net.minecraft.world.level.block.state.properties.BlockStateInteger;
+ import net.minecraft.world.level.block.state.properties.IBlockState;
++import net.minecraft.world.level.chunk.Chunk;
+ import net.minecraft.world.level.pathfinder.PathMode;
+ import net.minecraft.world.phys.MovingObjectPositionBlock;
+ import net.minecraft.world.phys.shapes.OperatorBoolean;
+@@ -302,6 +304,14 @@ public class BlockComposter extends Block implements IInventoryHolder {
+         if ((Integer) iblockdata.get(BlockComposter.a) == 7) {
+             worldserver.setTypeAndData(blockposition, (IBlockData) iblockdata.a((IBlockState) BlockComposter.a), 3);
+             worldserver.playSound((EntityHuman) null, blockposition, SoundEffects.BLOCK_COMPOSTER_READY, SoundCategory.BLOCKS, 1.0F, 1.0F);
++            // Purpur-SinonMC - keep track of inventory updates
++            Chunk chunk = worldserver.getChunkIfLoaded(blockposition);
++            if (chunk == null) {
++                Chunk.lastUnknownInventoryUpdate = MinecraftServer.currentTick;
++            } else {
++                chunk.inventoryUpdateMap.put(blockposition, MinecraftServer.currentTick);
++            }
++            // Purpur-SinonMC End
+         }
+ 
+     }
+@@ -428,6 +438,14 @@ public class BlockComposter extends Block implements IInventoryHolder {
+             } else {
+                 this.generatorAccess.setTypeAndData(this.blockPosition, this.blockData, 3);
+                 this.emptied = false;
++                // Purpur-SinonMC - keep track of inventory updates
++                Chunk chunk = generatorAccess.getMinecraftWorld().getChunkIfLoaded(blockPosition);
++                if (chunk == null) {
++                    Chunk.lastUnknownInventoryUpdate = MinecraftServer.currentTick;
++                } else {
++                    chunk.inventoryUpdateMap.put(blockPosition, MinecraftServer.currentTick);
++                }
++                // Purpur-SinonMC End
+             }
+             // CraftBukkit end
+         }
+diff --git a/src/main/java/net/minecraft/world/level/block/entity/TileEntity.java b/src/main/java/net/minecraft/world/level/block/entity/TileEntity.java
+index 35c4d5414db66b977a354ac50d35a6aa0fcd4cf8..1c1f8a4ab34fdaef28496ae043439a6d5a339f0f 100644
+--- a/src/main/java/net/minecraft/world/level/block/entity/TileEntity.java
++++ b/src/main/java/net/minecraft/world/level/block/entity/TileEntity.java
+@@ -10,6 +10,8 @@ import net.minecraft.nbt.NBTTagList;
+ import net.minecraft.nbt.NBTTagString;
+ import net.minecraft.network.protocol.game.PacketPlayOutTileEntityData;
+ import net.minecraft.resources.MinecraftKey;
++import net.minecraft.server.MinecraftServer;
++import net.minecraft.world.IInventory;
+ import net.minecraft.world.level.World;
+ import net.minecraft.world.level.block.EnumBlockMirror;
+ import net.minecraft.world.level.block.EnumBlockRotation;
+@@ -181,14 +183,28 @@ public abstract class TileEntity implements net.minecraft.server.KeyedObject { /
+ 
+     public void update() {
+         if (this.world != null) {
++            // Purpur-SinonMC - keep track of inventory updates
++            if (this instanceof IInventory) {
++                if (getCurrentChunk() == null) {
++                    Chunk.lastUnknownInventoryUpdate = MinecraftServer.currentTick;
++                } else {
++                    getCurrentChunk().inventoryUpdateMap.put(getPosition(), MinecraftServer.currentTick);
++                }
++            }
++            // Purpur-SinonMC End
+             if (IGNORE_TILE_UPDATES) return; // Paper
+             this.c = this.world.getType(this.position);
+             this.world.b(this.position, this);
+             if (!this.c.isAir()) {
+                 this.world.updateAdjacentComparators(this.position, this.c.getBlock());
+             }
++            // Purpur-SinonMC - keep track of inventory updates
++        } else {
++            if (this instanceof IInventory) {
++                Chunk.lastUnknownInventoryUpdate = MinecraftServer.currentTick;
++            }
++            // Purpur-SinonMC End
+         }
+-
+     }
+ 
+     public BlockPosition getPosition() {
+diff --git a/src/main/java/net/minecraft/world/level/block/entity/TileEntityHopper.java b/src/main/java/net/minecraft/world/level/block/entity/TileEntityHopper.java
+index 537dc52e5ff3325555ee6049bc7f277952983b76..f5a855ba759de0bc123d10bda32e2ae495c3777e 100644
+--- a/src/main/java/net/minecraft/world/level/block/entity/TileEntityHopper.java
++++ b/src/main/java/net/minecraft/world/level/block/entity/TileEntityHopper.java
+@@ -12,6 +12,7 @@ import net.minecraft.core.NonNullList;
+ import net.minecraft.nbt.NBTTagCompound;
+ import net.minecraft.network.chat.ChatMessage;
+ import net.minecraft.network.chat.IChatBaseComponent;
++import net.minecraft.server.MinecraftServer;
+ import net.minecraft.world.ContainerUtil;
+ import net.minecraft.world.IInventory;
+ import net.minecraft.world.IInventoryHolder;
+@@ -29,6 +30,7 @@ import net.minecraft.world.level.block.Block;
+ import net.minecraft.world.level.block.BlockChest;
+ import net.minecraft.world.level.block.BlockHopper;
+ import net.minecraft.world.level.block.state.IBlockData;
++import net.minecraft.world.level.chunk.Chunk;
+ import net.minecraft.world.phys.AxisAlignedBB;
+ import net.minecraft.world.phys.shapes.OperatorBoolean;
+ import net.minecraft.world.phys.shapes.VoxelShapes;
+@@ -159,13 +161,15 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+             if (!this.m() && (Boolean) this.getBlock().get(BlockHopper.ENABLED)) {
+                 boolean flag = false;
+ 
+-                if (!this.isEmpty()) {
++                if (!shouldSkipPush() && !this.isEmpty()) { // Purpur-SinonMC - don't attempt a futile push
+                     flag = this.k();
+                 }
++                lastAttemptedPush = MinecraftServer.currentTick; // Purpur-SinonMC
+ 
+-                if (!this.j()) {
++                if (!shouldSkipPull() && !this.isFull()) { // Purpur-SinonMC - don't attempt a futile push
+                     flag |= (Boolean) supplier.get();
+                 }
++                lastAttemptedPull = MinecraftServer.currentTick; // Purpur-SinonMC
+ 
+                 if (flag) {
+                     this.setCooldown(world.spigotConfig.hopperTransfer); // Spigot
+@@ -180,6 +184,7 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+         }
+     }
+ 
++    private boolean isFull() { return j(); } // Purpur-SinonMC - OBFHELPER
+     private boolean j() {
+         Iterator iterator = this.items.iterator();
+ 
+@@ -221,6 +226,7 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+                     itemstack = callPushMoveEvent(iinventory, itemstack);
+                     if (itemstack == null) { // cancelled
+                         origItemStack.setCount(origCount);
++                        lastSuccessfulPush = MinecraftServer.currentTick; // Purpur-SinonMC Count as success because plugins are unpredictable
+                         return false;
+                     }
+                 }
+@@ -234,6 +240,7 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+                     }
+                     this.setItem(i, origItemStack);
+                     iinventory.update();
++                    lastSuccessfulPush = MinecraftServer.currentTick; // Purpur-SinonMC
+                     return true;
+                 }
+                 origItemStack.setCount(origCount);
+@@ -256,6 +263,7 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+             itemstack = callPullMoveEvent(ihopper, iinventory, itemstack);
+             if (itemstack == null) { // cancelled
+                 origItemStack.setCount(origCount);
++                if (ihopper instanceof TileEntityHopper) ((TileEntityHopper) ihopper).lastSuccessfulPull = MinecraftServer.currentTick; // Purpur-SinonMC Count as a success because plugins are unpredictable
+                 // Drastically improve performance by returning true.
+                 // No plugin could of relied on the behavior of false as the other call
+                 // site for IMIE did not exhibit the same behavior
+@@ -275,6 +283,7 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+             iinventory.setItem(i, origItemStack);
+             IGNORE_TILE_UPDATES = false;
+             iinventory.update();
++            if (ihopper instanceof TileEntityHopper) ((TileEntityHopper) ihopper).lastSuccessfulPull = MinecraftServer.currentTick; // Purpur-SinonMC
+             return true;
+         }
+         origItemStack.setCount(origCount);
+@@ -350,6 +359,82 @@ public class TileEntityHopper extends TileEntityLootable implements IHopper, ITi
+     }
+     // Paper end
+ 
++    // Purpur-SinonMC start - skip unnecessary hopper pulls and pushes
++    private int lastUpdate = Integer.MIN_VALUE;
++    private int lastAttemptedPull = Integer.MIN_VALUE;
++    private int lastSuccessfulPull = Integer.MIN_VALUE;
++    private int lastAttemptedPush = Integer.MIN_VALUE;
++    private int lastSuccessfulPush = Integer.MIN_VALUE;
++    private static final java.util.function.BiPredicate<Chunk, Integer> containsInventories = (chunk, section) -> chunk.getInventoryEntityCounts()[section] > 0;
++    private static final java.util.function.BiPredicate<Chunk, Integer> containsItemsOrInventories = (chunk, section) -> chunk.getItemCounts()[section] > 0 || chunk.getInventoryEntityCounts()[section] > 0;
++
++    private boolean shouldSkipPull() {
++        return lastAttemptedPull > lastSuccessfulPull && // the last attempted pull was unsuccessful
++                Chunk.lastUnknownInventoryUpdate < lastAttemptedPush && // there have been no inventories with unknown locations updated since the last attempted pull
++                noNearbySectionsMatch(position.add(0, 1, 0), containsItemsOrInventories) && // there are no items or inventories we can pull
++                lastUpdate < lastAttemptedPull && // this hopper has not changed state since the last attempted pull
++                getCurrentChunk().inventoryUpdateMap.getOrDefault(position.add(0, 1, 0), Integer.MIN_VALUE) < lastAttemptedPull; // the inventory above has not changed state since the last attempted pull
++    }
++
++    private boolean shouldSkipPush() {
++        if (lastAttemptedPush <= lastSuccessfulPush) { // the last attempted push was successful
++            return false;
++        }
++        BlockPosition toPosition = this.position.shift(this.getBlock().get(BlockHopper.FACING));
++        if (noNearbySectionsMatch(toPosition, containsInventories) && // there are no inventory entities we can push to
++                Chunk.lastUnknownInventoryUpdate < lastAttemptedPush && // there have been no inventories with unknown locations updated since the last attempted push
++                lastUpdate < lastAttemptedPush // this hopper has not changed state since the last attempted push
++        ) {
++            Chunk chunk = getCurrentChunk();
++            // toPosition may not be in the same chunk as the hopper so we have to check
++            int toChunkOffsetX = ((toPosition.getX() + 3 >> 4) - chunk.locX) + ((toPosition.getX() - 2 >> 4) - chunk.locX);
++            int toChunkOffsetZ = ((toPosition.getZ() + 3 >> 4) - chunk.locZ) + ((toPosition.getZ() - 2 >> 4) - chunk.locZ);
++            if (toChunkOffsetX != 0 || toChunkOffsetZ != 0) {
++                chunk = chunk.getRelativeNeighbourIfLoaded(toChunkOffsetX, toChunkOffsetZ);
++            }
++            if (chunk != null) {
++                return chunk.inventoryUpdateMap.getOrDefault(toPosition, Integer.MIN_VALUE) < lastAttemptedPush; // the inventory the hopper is facing has not changed state since the last attempted push
++            }
++        }
++        return false;
++    }
++
++    // Returns true if none of the sections near to (within two blocks of) blockPosition satisfy predicate
++    // This method assumes blockPosition is adjacent to the hopper
++    private boolean noNearbySectionsMatch(BlockPosition blockPosition, java.util.function.BiPredicate<Chunk, Integer> predicate) {
++        Chunk currentChunk = getCurrentChunk();
++        final int minY = Math.max(0, (blockPosition.getY() - 2) >> 4);
++        final int maxY = Math.min(15, (blockPosition.getY() + 2 + 2) >> 4);
++        for (int y = minY; y <= maxY; y++) {
++            if (predicate.test(currentChunk, y)) {
++                return false;
++            }
++        }
++
++        final int offsetX = ((blockPosition.getX() + 3 >> 4) - currentChunk.locX) + ((blockPosition.getX() - 2 >> 4) - currentChunk.locX);
++        final int offsetZ = ((blockPosition.getZ() + 3 >> 4) - currentChunk.locZ) + ((blockPosition.getZ() - 2 >> 4) - currentChunk.locZ);
++        for (int x = Math.min(0, offsetX); x <= Math.max(0, offsetX); x++) {
++            for (int z = Math.min(0, offsetZ); z <= Math.max(0, offsetZ); z++) {
++                Chunk chunk = currentChunk.getRelativeNeighbourIfLoaded(x, z);
++                if (chunk == null) continue;
++                for (int y = minY; y <= maxY; y++) {
++                    if (predicate.test(chunk, y)) {
++                        return false;
++                    }
++                }
++            }
++        }
++
++        return true;
++    }
++
++    @Override
++    public void update() {
++        super.update();
++        lastUpdate = MinecraftServer.currentTick; // Keep track of updates locally so we don't have to do an extra map lookup in shouldSkipPull and shouldSkipPull
++    }
++    // Purpur-SinonMC end
++
+     private boolean k() {
+         IInventory iinventory = this.l();
+ 
+diff --git a/src/main/java/net/minecraft/world/level/chunk/Chunk.java b/src/main/java/net/minecraft/world/level/chunk/Chunk.java
+index fc07e2014e961da5d97095c4ee6f972e2ece3ec3..7cf70d7330d5d0dc2c453ebe22934bc4525c0324 100644
+--- a/src/main/java/net/minecraft/world/level/chunk/Chunk.java
++++ b/src/main/java/net/minecraft/world/level/chunk/Chunk.java
+@@ -137,6 +137,19 @@ public class Chunk implements IChunkAccess {
+     private final int[] inventoryEntityCounts = new int[16];
+     // Paper end
+ 
++    // Purpur-SinonMC
++    public int[] getItemCounts() {
++        return itemCounts;
++    }
++
++    public int[] getInventoryEntityCounts() {
++        return inventoryEntityCounts;
++    }
++    // Keep track of inventory updates
++    public static Integer lastUnknownInventoryUpdate = Integer.MIN_VALUE;
++    public it.unimi.dsi.fastutil.objects.Object2IntMap<BlockPosition> inventoryUpdateMap = new it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap<>();
++    // Purpur-SinonMC End
++
+     // Tuinity start - optimise hard collision handling
+     // Tuinity - optimised entity slices
+ 
