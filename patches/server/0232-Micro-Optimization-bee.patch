@@ -5,40 +5,22 @@ Subject: [PATCH] Micro-Optimization bee
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/animal/EntityBee.java b/src/main/java/net/minecraft/world/entity/animal/EntityBee.java
-index 4da4fadbd4a036b316d554de20c0d30d35cc206b..1635f6e6e99f79de37278ddd8960363437119235 100644
+index 4da4fadbd4a036b316d554de20c0d30d35cc206b..92d218342854ef6ae818a417a985ca59a2fe9431 100644
 --- a/src/main/java/net/minecraft/world/entity/animal/EntityBee.java
 +++ b/src/main/java/net/minecraft/world/entity/animal/EntityBee.java
-@@ -115,13 +115,15 @@ public class EntityBee extends EntityAnimal implements IEntityAngerable, EntityB
-         final net.pl3x.purpur.controller.ControllerMoveWASDFlying flyingController = new net.pl3x.purpur.controller.ControllerMoveWASDFlying(this, 0.25F, false); // Purpur
-         // Paper start - apply gravity to bees when they get stuck in the void, fixes MC-167279
-         this.moveController = new ControllerMoveFlying(this, 20, true) {
--            @Override
-+
-+            // Purpur-SinonMC - Move to tick()
-+            /*@Override
-             public void tick() {
-                 if (getEntity().locY() <= 0) {
-                     getEntity().setNoGravity(false);
-                 }
-                 super.tick();
--            }
-+            }*/
- 
-             // Purpur start
-             @Override
-@@ -295,6 +297,11 @@ public class EntityBee extends EntityAnimal implements IEntityAngerable, EntityB
+@@ -295,6 +295,11 @@ public class EntityBee extends EntityAnimal implements IEntityAngerable, EntityB
      @Override
      public void tick() {
          super.tick();
-+        // Purpur-SinonMC Start - The bees in the void do not need to continue calling ticks here, we deactivate it (Basic done by Paper but I move it here).
-+        if (this.getBlockLocation().getY() <= 0) {
-+            this.setNoGravity(false);
++        // Purpur-SinonMC Start - We kill the bee directly.
++        if (this.getBlockLocation().getY() <= -1) {
++            this.killEntity();
 +        } else
 +        // Purpur-SinonMC Stop
          if (this.hasNectar() && this.getNumCropsGrownSincePollination() < 10 && this.random.nextFloat() < 0.05F) {
              for (int i = 0; i < this.random.nextInt(2) + 1; ++i) {
                  this.a(this.world, this.locX() - 0.30000001192092896D, this.locX() + 0.30000001192092896D, this.locZ() - 0.30000001192092896D, this.locZ() + 0.30000001192092896D, this.e(0.5D), Particles.FALLING_NECTAR);
-@@ -630,7 +637,7 @@ public class EntityBee extends EntityAnimal implements IEntityAngerable, EntityB
+@@ -630,7 +635,7 @@ public class EntityBee extends EntityAnimal implements IEntityAngerable, EntityB
  
      @Override
      protected float b(EntityPose entitypose, EntitySize entitysize) {
