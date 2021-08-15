@@ -17,7 +17,7 @@ index 79ff69f9e2dc92ffb4880cf1e059cd1d6a7bdc8a..1ce550ecae370e9e5247d653b2594365
          this.playerConnection.sendPacket(new PacketPlayOutOpenSignEditor(tileentitysign.getPosition()));
      }
 diff --git a/src/main/java/net/minecraft/server/network/PlayerConnection.java b/src/main/java/net/minecraft/server/network/PlayerConnection.java
-index 8856ee8e0e7a3efda7921c0c8df9a2eb4213b1ce..e8a9c8a7fc4089e48e09afc1638cf1ccde7b0fab 100644
+index 815019dd9ef1a1b3da19d38e8ed9b9263347bdd3..3fe03c11997486fde574794607dd6c0ed793171f 100644
 --- a/src/main/java/net/minecraft/server/network/PlayerConnection.java
 +++ b/src/main/java/net/minecraft/server/network/PlayerConnection.java
 @@ -3087,6 +3087,15 @@ public class PlayerConnection implements PacketListenerPlayIn {

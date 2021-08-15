@@ -69,10 +69,10 @@ index d93ecf4b3451b1c3c309aadfe2ec287a68df0713..afe3c53252354760b22901f7f109fd5d
                          lagging = recentTps[0] < net.pl3x.purpur.PurpurConfig.laggingThreshold; // Purpur
                          tickSection = curTime;
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 4fda0ebca5bb6706103c5aeedc2650d0330352b3..e9d6c38a042195dae44109706cf5710e7ac3d316 100644
+index b93b488028215a02581ed22bbb204cfca9790d03..03d058459a3a6bb2ff30fe0b7aea778e8948669c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -2333,6 +2333,7 @@ public final class CraftServer implements Server {
+@@ -2334,6 +2334,7 @@ public final class CraftServer implements Server {
      @Override
      public double[] getTPS() {
          return new double[] {

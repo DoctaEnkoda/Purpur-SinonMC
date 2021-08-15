@@ -67,7 +67,7 @@ index b302d1f7c86a8df2ede46871397189f6f2e6b912..79ff69f9e2dc92ffb4880cf1e059cd1d
      public Scoreboard getScoreboard() {
          return getBukkitEntity().getScoreboard().getHandle();
 diff --git a/src/main/java/net/minecraft/server/network/PlayerConnection.java b/src/main/java/net/minecraft/server/network/PlayerConnection.java
-index de72ebb94052efe8c63bf28f6741a4645b3ee721..d1fe1242272a422b7b528876da0d76e1aa6f3eaa 100644
+index 34152be2658cce3ec96138363e7363f32fc6aa9a..07fc11bafa9d6644c65d115814a527da79099463 100644
 --- a/src/main/java/net/minecraft/server/network/PlayerConnection.java
 +++ b/src/main/java/net/minecraft/server/network/PlayerConnection.java
 @@ -1910,6 +1910,7 @@ public class PlayerConnection implements PacketListenerPlayIn {
