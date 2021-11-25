@@ -13,7 +13,7 @@ index 740b8243b95e46af5ba920f588357c78f4168dbb..d4d6ab96468ba08f6d43b6d07c921118
          this.entityTickList = new EntityTickList();
          Predicate<Block> predicate = (block) -> { // CraftBukkit - decompile eror
 -            return block == null || block.defaultBlockState().isAir();
-+            return block == null || block.defaultBlockState().isAir() || purpurConfig.noRandomTickBlocks.contains(block); // Purpur
++            return block == null || block.defaultBlockState().isAir(); // Remove By DoctaEnkoda || purpurConfig.noRandomTickBlocks.contains(block); // Purpur
          };
          DefaultedRegistry registryblocks = Registry.BLOCK;
  
@@ -25,12 +25,12 @@ index 3d677fe25ed015e30634bf2fccde29f332e3dd87..e1aba175a74e73db0a8a11e8d2df35c4
          }
  
          public void tick(ServerLevel world, BlockPos pos, Random random) {
-+            if (world.purpurConfig.noRandomTickBlocks.contains(getBlock())) return; // Purpur
++            // Remove By DoctaEnkoda - if (world.purpurConfig.noRandomTickBlocks.contains(getBlock())) return; // Purpur
              this.getBlock().tick(this.asState(), world, pos, random);
          }
  
          public void randomTick(ServerLevel world, BlockPos pos, Random random) {
-+            if (world.purpurConfig.noRandomTickBlocks.contains(getBlock())) return; // Purpur
++            // Remove By DoctaEnkoda - if (world.purpurConfig.noRandomTickBlocks.contains(getBlock())) return; // Purpur
              this.getBlock().randomTick(this.asState(), world, pos, random);
          }
  
