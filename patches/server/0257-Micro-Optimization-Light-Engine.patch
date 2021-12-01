@@ -16,6 +16,7 @@ index 136ca55ac38b709e086f8e2e68dc1d0db2670ae4..9d5b24264fcf25d225e3d7c0e468d2e2
 +        if (ambientDarkness == 0) return 15; // Purpur-SinonMC Micro Optimization Light Engine
 +        // need to use new light  hooks for this
          final int sky = this.theLightEngine.getSkyReader().getLightValue(pos) - ambientDarkness;
++        
          final int block = this.theLightEngine.getBlockReader().getLightValue(pos);
          return Math.max(sky, block);
      }
