@@ -1,0 +1,83 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Bierque Jason <bierquejason@gmail.com>
+Date: Thu, 2 Dec 2021 12:37:29 +0100
+Subject: [PATCH] Optimize collisions
+ https://github.com/PurpurMC/Purpur/blob/ver/1.16.5/patches/server/0209-Optimize-collisions.patch
+
+
+diff --git a/src/main/java/io/papermc/paper/util/CollisionUtil.java b/src/main/java/io/papermc/paper/util/CollisionUtil.java
+index b2e2d6ee25a88f9c8f6769c6774643220f9c148b..5ea1257e7013156b001fccf22215ca5f0dabc2ed 100644
+--- a/src/main/java/io/papermc/paper/util/CollisionUtil.java
++++ b/src/main/java/io/papermc/paper/util/CollisionUtil.java
+@@ -410,14 +410,16 @@ public final class CollisionUtil {
+             }
+         }
+ 
+-        int minBlockX = Mth.floor(aabb.minX - COLLISION_EPSILON) - 1;
+-        int maxBlockX = Mth.floor(aabb.maxX + COLLISION_EPSILON) + 1;
++        // Purpur-SinonMC Rebase Start
++        //int minBlockX = Mth.floor(aabb.minX - COLLISION_EPSILON) - 1;
++        //int maxBlockX = Mth.floor(aabb.maxX + COLLISION_EPSILON) + 1;
+ 
+         int minBlockY = Mth.floor(aabb.minY - COLLISION_EPSILON) - 1;
+         int maxBlockY = Mth.floor(aabb.maxY + COLLISION_EPSILON) + 1;
+ 
+-        int minBlockZ = Mth.floor(aabb.minZ - COLLISION_EPSILON) - 1;
+-        int maxBlockZ = Mth.floor(aabb.maxZ + COLLISION_EPSILON) + 1;
++        //int minBlockZ = Mth.floor(aabb.minZ - COLLISION_EPSILON) - 1;
++        //int maxBlockZ = Mth.floor(aabb.maxZ + COLLISION_EPSILON) + 1;
++        // Purpur-SinonMC Rebase End
+ 
+         final int minSection = WorldUtil.getMinSection(getter);
+         final int maxSection = WorldUtil.getMaxSection(getter);
+@@ -433,6 +435,14 @@ public final class CollisionUtil {
+             return ret;
+         }
+ 
++        // Purpur-SinonMC Rebase Start
++        int minBlockX = Mth.floor(aabb.minX - COLLISION_EPSILON) - 1;
++        int maxBlockX = Mth.floor(aabb.maxX + COLLISION_EPSILON) + 1;
++
++        int minBlockZ = Mth.floor(aabb.minZ - COLLISION_EPSILON) - 1;
++        int maxBlockZ = Mth.floor(aabb.maxZ + COLLISION_EPSILON) + 1;
++        // Purpur-SinonMC Rebase End
++
+         int minYIterate = Math.max(minBlock, minBlockY);
+         int maxYIterate = Math.min(maxBlock, maxBlockY);
+ 
+diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
+index 7b5c03950c3cef5b0fce450907e498f2184853ae..c95c3332b40aa5efa4e2640c4aa7fc4169dcac2c 100644
+--- a/src/main/java/net/minecraft/world/entity/Entity.java
++++ b/src/main/java/net/minecraft/world/entity/Entity.java
+@@ -3923,12 +3923,13 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, n
+         } else {
+             AABB axisalignedbb = getAxisForFluidCheck(); // Purpur
+             // Airplane start - rename
+-            int minBlockX = Mth.floor(axisalignedbb.minX);
+-            int maxBlockX = Mth.ceil(axisalignedbb.maxX);
++            // Purpur-SinonMC Rebase Start
++            //int minBlockX = Mth.floor(axisalignedbb.minX);
++            //int maxBlockX = Mth.ceil(axisalignedbb.maxX);
+             int minBlockY = Mth.floor(axisalignedbb.minY);
+             int maxBlockY = Mth.ceil(axisalignedbb.maxY);
+-            int minBlockZ = Mth.floor(axisalignedbb.minZ);
+-            int maxBlockZ = Mth.ceil(axisalignedbb.maxZ);
++            //int minBlockZ = Mth.floor(axisalignedbb.minZ);
++            //int maxBlockZ = Mth.ceil(axisalignedbb.maxZ);
+             // Airplane end
+             double d1 = 0.0D;
+             boolean flag = this.isPushedByFluid();
+@@ -3949,6 +3950,13 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, n
+                 return false;
+             }
+ 
++            // Purpur-SinonMC Start - Rebase
++            int minBlockX = Mth.floor(axisalignedbb.minX);
++            int maxBlockX = Mth.ceil(axisalignedbb.maxX);
++
++            int minBlockZ = Mth.floor(axisalignedbb.minZ);
++            int maxBlockZ = Mth.ceil(axisalignedbb.maxZ);
++
+             int minYIterate = Math.max(minBlock, minBlockY);
+             int maxYIterate = Math.min(maxBlock, maxBlockY);
+ 
