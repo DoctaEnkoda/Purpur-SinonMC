@@ -1,0 +1,26 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Bierque Jason <bierquejason@gmail.com>
+Date: Thu, 2 Dec 2021 11:14:45 +0100
+Subject: [PATCH] Don't get block light level if the sky level is 15
+
+A very small light engine optimization. If the sky light level is 15, the block light level will never be higher,
+since Minecraft doesn't support light levels above 15. This will prevent an extra call to getLightValue for
+areas with sky access during the day. After some quick profiling on a flat world, this seems to reduce the time spent
+on the getBrightness method by ~23%. The method is called every time a grass block randomly ticks
+(along with crop growth), so this will cause a very slight reduction in the tick duration for most servers.
+
+diff --git a/src/main/java/net/minecraft/server/level/ThreadedLevelLightEngine.java b/src/main/java/net/minecraft/server/level/ThreadedLevelLightEngine.java
+index 136ca55ac38b709e086f8e2e68dc1d0db2670ae4..fe55b1fc0c3e3a9c8c5763c6f254aaf82b17a454 100644
+--- a/src/main/java/net/minecraft/server/level/ThreadedLevelLightEngine.java
++++ b/src/main/java/net/minecraft/server/level/ThreadedLevelLightEngine.java
+@@ -325,6 +325,10 @@ public class ThreadedLevelLightEngine extends LevelLightEngine implements AutoCl
+     public int getRawBrightness(final BlockPos pos, final int ambientDarkness) {
+         // need to use new light hooks for this
+         final int sky = this.theLightEngine.getSkyReader().getLightValue(pos) - ambientDarkness;
++        // Purpur-SinonMC - start
++        // Don't fetch the block light level if the skylight level is 15, since the value will never be higher.
++        if (sky == 15) return 15;
++        // Purpur-SinonMC - stop
+         final int block = this.theLightEngine.getBlockReader().getLightValue(pos);
+         return Math.max(sky, block);
+     }
