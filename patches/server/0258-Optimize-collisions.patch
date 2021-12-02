@@ -77,7 +77,7 @@ index 7b5c03950c3cef5b0fce450907e498f2184853ae..c95c3332b40aa5efa4e2640c4aa7fc41
 +
 +            int minBlockZ = Mth.floor(axisalignedbb.minZ);
 +            int maxBlockZ = Mth.ceil(axisalignedbb.maxZ);
-+
++            // Purpur-SinonMC Rebase End
              int minYIterate = Math.max(minBlock, minBlockY);
              int maxYIterate = Math.min(maxBlock, maxBlockY);
  
