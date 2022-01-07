@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Bierque Jason <bierquejason@gmail.com>
+Date: Fri, 7 Jan 2022 14:17:40 +0100
+Subject: [PATCH] =?UTF-8?q?Authoris=C3=A9=20ajout=20enchantement=20dans=20?=
+ =?UTF-8?q?bukkit?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+
+diff --git a/src/main/java/org/bukkit/enchantments/Enchantment.java b/src/main/java/org/bukkit/enchantments/Enchantment.java
+index 1e1c5a9d9a769018c4604e6e44fc5ed2312981e9..dc8813edad2ffe6cb753c6be7bd23c77e500f31c 100644
+--- a/src/main/java/org/bukkit/enchantments/Enchantment.java
++++ b/src/main/java/org/bukkit/enchantments/Enchantment.java
+@@ -400,7 +400,7 @@ public abstract class Enchantment implements Keyed, net.kyori.adventure.translat
+      * Stops accepting any enchantment registrations
+      */
+     public static void stopAcceptingRegistrations() {
+-        acceptingNew = false;
++        // acceptingNew = false;
+     }
+ 
+     /**
