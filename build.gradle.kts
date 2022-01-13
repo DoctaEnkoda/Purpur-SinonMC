@@ -9,6 +9,7 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven("https://maven.fabricmc.net/")
     maven("https://papermc.io/repo/repository/maven-public/") {
         content { onlyForConfigurations(PAPERCLIP_CONFIG) }
     }
