@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Bierque Jason <bierquejason@gmail.com>
-Date: Fri, 14 Jan 2022 19:38:09 +0100
+From: Kevin Raneri <kevin.raneri@gmail.com>
+Date: Wed, 10 Nov 2021 00:37:03 -0500
 Subject: [PATCH] Optimize mob spawning
 
 This patch aims to reduce the main-thread impact of mob spawning by
@@ -40,19 +40,6 @@ index 72063ba7fb0d04594043cb07034590d597c3d77e..e4f84112f125673916824fdd7c68e0c1
              final PooledHashSets.PooledObjectLinkedOpenHashSet<ServerPlayer> map = entry.getValue();
  
              if (map.referenceCount == 0) {
-diff --git a/src/main/java/net/minecraft/world/level/entity/EntityTickList.java b/src/main/java/net/minecraft/world/level/entity/EntityTickList.java
-index 4814e719e0b898464692075170889fdb2729a26a..ffcd18fa852af3f24bdf5398f481b839d2dcfe6c 100644
---- a/src/main/java/net/minecraft/world/level/entity/EntityTickList.java
-+++ b/src/main/java/net/minecraft/world/level/entity/EntityTickList.java
-@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
- import net.minecraft.world.entity.Entity;
- 
- public class EntityTickList {
--    private final io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<Entity> entities = new io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<>(true); // Paper - rewrite this, always keep this updated - why would we EVER tick an entity that's not ticking?
-+    public final io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<Entity> entities = new io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<>(true); // Paper - rewrite this, always keep this updated - why would we EVER tick an entity that's not ticking? // Pufferfish - private->public
- 
-     private void ensureActiveIsNotIterated() {
-         // Paper - replace with better logic, do not delay removals
 diff --git a/src/main/java/net/pl3x/purpur/PurpurConfig.java b/src/main/java/net/pl3x/purpur/PurpurConfig.java
 index 7e36bcda5b8caee9fb604d26f7b9b22a7b1fea98..5cae421f2f770616664a3b2a99708081a956b653 100644
 --- a/src/main/java/net/pl3x/purpur/PurpurConfig.java
@@ -69,58 +56,44 @@ index 7e36bcda5b8caee9fb604d26f7b9b22a7b1fea98..5cae421f2f770616664a3b2a99708081
 +    }
  }
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 3ba0e6d49965e39f8571908adf548b70f4dbe776..324bfa9273e4a307d3c35c4a36641b5462147b0f 100644
+index 0950f256d8e1cc8e3008cddba91ce79be55c2d5b..7ecf3a41f8a8069b87ffdd9eac36a2bc9f255970 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -316,6 +316,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -314,6 +314,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+ 
      public volatile Thread shutdownThread; // Paper
      public volatile boolean abnormalExit = false; // Paper
- 
++    
 +    public gg.pufferfish.pufferfish.util.AsyncExecutor mobSpawnExecutor = new gg.pufferfish.pufferfish.util.AsyncExecutor("MobSpawning", () -> true); // Pufferfish - optimize mob spawning
-+
+ 
      public static <S extends MinecraftServer> S spin(Function<Thread, S> serverFactory) {
          AtomicReference<S> atomicreference = new AtomicReference();
-         Thread thread = new Thread(() -> {
 diff --git a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-index d5c61053f6af91aa5d0894750ab86372a91c9a73..fdf525f84c5269530c5ff109194ca92acc868960 100644
+index 93c7c4160604d2a6f8dcd3049c414ab5333510b4..16dd108b4ec98d82e12fc968d8213b95b0a6952f 100644
 --- a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-@@ -387,6 +387,8 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -364,6 +364,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
  
              net.pl3x.purpur.task.BossBarTask.startAll(); // Purpur
  
-+            if (net.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning) mobSpawnExecutor.start(); // Pufferfish
-+
++            if (gnet.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning) mobSpawnExecutor.start(); // Pufferfish
              return true;
          }
      }
-diff --git a/src/main/java/net/minecraft/server/level/ChunkMap.java b/src/main/java/net/minecraft/server/level/ChunkMap.java
-index 7740a4d7652d23460017ca2abfc3dcd838ce9e99..396ccf45576e403abcf9fb0b5d9722268ecf8d13 100644
---- a/src/main/java/net/minecraft/server/level/ChunkMap.java
-+++ b/src/main/java/net/minecraft/server/level/ChunkMap.java
-@@ -444,7 +444,7 @@ public class ChunkMap extends ChunkStorage implements ChunkHolder.PlayerProvider
-         // Paper start - no-tick view distance
-         this.setNoTickViewDistance(this.level.paperConfig.noTickViewDistance); // Paper - replace chunk loading system
-         // Paper end - no-tick view distance
--        this.playerMobDistanceMap = this.level.paperConfig.perPlayerMobSpawns ? new com.destroystokyo.paper.util.PlayerMobDistanceMap() : null; // Paper
-+        this.playerMobDistanceMap = this.level.paperConfig.perPlayerMobSpawns ? new gg.pufferfish.pufferfish.util.AsyncPlayerAreaMap(this.pooledLinkedPlayerHashSets) : null; // Paper // Pufferfish
-         // Paper start - use distance map to optimise entity tracker
-         this.playerEntityTrackerTrackMaps = new com.destroystokyo.paper.util.misc.PlayerAreaMap[TRACKING_RANGE_TYPES.length];
-         this.entityTrackerTrackRanges = new int[TRACKING_RANGE_TYPES.length];
 diff --git a/src/main/java/net/minecraft/server/level/ServerChunkCache.java b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..63dc6559b1a5de9f1b26bc9e7453c1f9cc9dba18 100644
+index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..e70136688a03b24bffbfbf1855efbedd00326980 100644
 --- a/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 +++ b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-@@ -74,6 +74,9 @@ public class ServerChunkCache extends ChunkSource {
+@@ -73,6 +73,9 @@ public class ServerChunkCache extends ChunkSource {
+     final Long2ObjectOpenHashMap<LevelChunk> loadedChunkMap = new Long2ObjectOpenHashMap<>(8192, 0.5f);
  
      private final LevelChunk[] lastLoadedChunks = new LevelChunk[4 * 4];
- 
++    
 +    public boolean firstRunSpawnCounts = true; // Pufferfish
 +    public final java.util.concurrent.atomic.AtomicBoolean _pufferfish_spawnCountsReady = new java.util.concurrent.atomic.AtomicBoolean(false); // Pufferfish - optimize countmobs
-+
+ 
      private static int getChunkCacheKey(int x, int z) {
          return x & 3 | ((z & 3) << 2);
-     }
 @@ -998,18 +1001,25 @@ public class ServerChunkCache extends ChunkSource {
                  this.level.timings.playerMobDistanceMapUpdate.startTiming();
                  this.chunkMap.playerMobDistanceMap.update(this.level.players, this.chunkMap.viewDistance);
@@ -129,19 +102,19 @@ index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..63dc6559b1a5de9f1b26bc9e7453c1f9
 -                for (ServerPlayer player : this.level.players) {
 -                    Arrays.fill(player.mobCounts, 0);
 +                // Pufferfish start - moved down when async processing
-+                if (!net.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning) {
++                if (!gnet.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning) {
 +                    // re-set mob counts
 +                    for (ServerPlayer player : this.level.players) {
 +                        Arrays.fill(player.mobCounts, 0);
 +                    }
-+                    lastSpawnState = NaturalSpawner.createState(l, this.level.getAllEntities(), this::getFullChunk, null, true);
++                    lastSpawnState = NaturalSpawner.createState(l, this.level.getAllEntities(), this::getFullChunk, true);
                  }
 -                spawnercreature_d = NaturalSpawner.createState(l, this.level.getAllEntities(), this::getFullChunk, true);
-+                // Pufferfish end
++                 // Pufferfish end
              } else {
 -                spawnercreature_d = NaturalSpawner.createState(l, this.level.getAllEntities(), this::getFullChunk, false);
 +                // Pufferfish start - this is only implemented for per-player mob spawning so this makes everything work if this setting is disabled.
-+                lastSpawnState = NaturalSpawner.createState(l, this.level.getAllEntities(), this::getFullChunk, this.chunkMap.playerMobDistanceMap == null ? new LocalMobCapCalculator(this.chunkMap) : null, false);
++                lastSpawnState = NaturalSpawner.createState(l, this.level.getAllEntities(), this::getFullChunk, false);
 +                _pufferfish_spawnCountsReady.set(true);
 +                // Pufferfish end
              }
@@ -159,17 +132,18 @@ index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..63dc6559b1a5de9f1b26bc9e7453c1f9
                          chunk.setInhabitedTime(chunk.getInhabitedTime() + j);
 -                        if (flag1 && (this.spawnEnemies || this.spawnFriendlies) && this.level.getWorldBorder().isWithinBounds(chunk.getPos()) && !this.chunkMap.isOutsideOfRange(playerchunk, chunkcoordintpair, true)) { // Spigot // Paper - optimise isOutsideOfRange
 -                            NaturalSpawner.spawnForChunk(this.level, chunk, spawnercreature_d, this.spawnFriendlies, this.spawnEnemies, flag2);
-+                        if (flag1 && (!net.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning || _pufferfish_spawnCountsReady.get()) && (this.spawnEnemies || this.spawnFriendlies) && this.level.getWorldBorder().isWithinBounds(chunk.getPos()) && !this.chunkMap.isOutsideOfRange(playerchunk, chunkcoordintpair, true)) { // Spigot // Paper - optimise isOutsideOfRange // Pufferfish
++                        if (flag1 && (!gnet.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning || _pufferfish_spawnCountsReady.get()) && (this.spawnEnemies || this.spawnFriendlies) && this.level.getWorldBorder().isWithinBounds(chunk.getPos()) && !this.chunkMap.isOutsideOfRange(playerchunk, chunkcoordintpair, true)) { // Spigot // Paper - optimise isOutsideOfRange // Pufferfish
 +                            NaturalSpawner.spawnForChunk(this.level, chunk, lastSpawnState, this.spawnFriendlies, this.spawnEnemies, flag2); // Pufferfish
                          }
  
                          // this.level.timings.doTickTiles.startTiming(); // Spigot // Paper
-@@ -1089,6 +1099,29 @@ public class ServerChunkCache extends ChunkSource {
+@@ -1089,6 +1099,30 @@ public class ServerChunkCache extends ChunkSource {
              }
          }
          // Paper end - controlled flush for entity tracker packets
++    
 +        // Pufferfish start - optimize mob spawning
-+        if (net.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning) {
++        if (gnet.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning) {
 +            for (ServerPlayer player : this.level.players) {
 +                Arrays.fill(player.mobCounts, 0);
 +            }
@@ -195,7 +169,7 @@ index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..63dc6559b1a5de9f1b26bc9e7453c1f9
  
      private void getFullChunk(long pos, Consumer<LevelChunk> chunkConsumer) {
 diff --git a/src/main/java/net/minecraft/world/level/NaturalSpawner.java b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
-index a0db30970adebb244ff41913e8ec1df1eb472a4d..b0db2bb4c22e92c5eb5af76a7d3f67f65fde5e23 100644
+index a0db30970adebb244ff41913e8ec1df1eb472a4d..e216d9a3750b7a914433551ef37315dee2708bdc 100644
 --- a/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 +++ b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 @@ -167,7 +167,7 @@ public final class NaturalSpawner {
@@ -203,7 +177,20 @@ index a0db30970adebb244ff41913e8ec1df1eb472a4d..b0db2bb4c22e92c5eb5af76a7d3f67f6
  
              if (world.paperConfig.perPlayerMobSpawns) {
 -                int minDiff = Integer.MAX_VALUE;
-+                int minDiff = net.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning ? difference : Integer.MAX_VALUE; // Pufferfish - optimize mob spawning
++                int minDiff = gnet.pl3x.purpur.PurpurConfig.enableAsyncMobSpawning ? difference : Integer.MAX_VALUE; // Pufferfish - optimize mob spawning
                  for (ServerPlayer entityplayer : world.getChunkSource().chunkMap.playerMobDistanceMap.getPlayersInRange(chunk.getPos())) {
                      minDiff = Math.min(limit - world.getChunkSource().chunkMap.getMobCountNear(entityplayer, enumcreaturetype), minDiff);
                  }
+diff --git a/src/main/java/net/minecraft/world/level/entity/EntityTickList.java b/src/main/java/net/minecraft/world/level/entity/EntityTickList.java
+index 4814e719e0b898464692075170889fdb2729a26a..ffcd18fa852af3f24bdf5398f481b839d2dcfe6c 100644
+--- a/src/main/java/net/minecraft/world/level/entity/EntityTickList.java
++++ b/src/main/java/net/minecraft/world/level/entity/EntityTickList.java
+@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
+ import net.minecraft.world.entity.Entity;
+ 
+ public class EntityTickList {
+-    private final io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<Entity> entities = new io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<>(true); // Paper - rewrite this, always keep this updated - why would we EVER tick an entity that's not ticking?
++    public final io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<Entity> entities = new io.papermc.paper.util.maplist.IteratorSafeOrderedReferenceSet<>(true); // Paper - rewrite this, always keep this updated - why would we EVER tick an entity that's not ticking? // Pufferfish - private->public
+ 
+     private void ensureActiveIsNotIterated() {
+         // Paper - replace with better logic, do not delay removals
