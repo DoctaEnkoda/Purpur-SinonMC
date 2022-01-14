@@ -46,7 +46,7 @@ index b2e2d6ee25a88f9c8f6769c6774643220f9c148b..5ea1257e7013156b001fccf22215ca5f
          int maxYIterate = Math.min(maxBlock, maxBlockY);
  
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 7b5c03950c3cef5b0fce450907e498f2184853ae..c95c3332b40aa5efa4e2640c4aa7fc4169dcac2c 100644
+index 7b5c03950c3cef5b0fce450907e498f2184853ae..9769f07d4c085b8796f347bed8144e7a4a17ccc8 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
 @@ -3923,12 +3923,13 @@ public abstract class Entity implements Nameable, EntityAccess, CommandSource, n

@@ -5,10 +5,10 @@ Subject: [PATCH] Config for unverified username message
 
 
 diff --git a/src/main/java/net/minecraft/server/network/ServerLoginPacketListenerImpl.java b/src/main/java/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
-index 494ca8fa8c742d4eac9fb11878d3b3170d850265..fd25d3bdc28d713159265911fab1b3d2e9375dbd 100644
+index 3d7f0fc6ef611273f83562d8b92a5714fbd47121..bfe53f4cd11f60ed37612c48f24b743ad6aa3458 100644
 --- a/src/main/java/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
 +++ b/src/main/java/net/minecraft/server/network/ServerLoginPacketListenerImpl.java
-@@ -309,7 +309,7 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener
+@@ -337,7 +337,7 @@ public class ServerLoginPacketListenerImpl implements ServerLoginPacketListener
                          ServerLoginPacketListenerImpl.this.gameProfile = ServerLoginPacketListenerImpl.this.createFakeProfile(gameprofile);
                          ServerLoginPacketListenerImpl.this.state = ServerLoginPacketListenerImpl.State.READY_TO_ACCEPT;
                      } else {
