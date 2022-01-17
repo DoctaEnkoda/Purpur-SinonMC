@@ -20,15 +20,6 @@ diff --git a/src/main/java/net/minecraft/world/entity/LivingEntity.java b/src/ma
 index d27186a78719ac4e3d1ce5b8d7d727f18e9e3a95..3b3b38d2052a767d84596d34d39d097c7ad99021 100644
 --- a/src/main/java/net/minecraft/world/entity/LivingEntity.java
 +++ b/src/main/java/net/minecraft/world/entity/LivingEntity.java
-@@ -275,7 +275,7 @@ public abstract class LivingEntity extends Entity {
-     public void inactiveTick()
-     {
-         super.inactiveTick();
--        ++this.noActionTime; // Above all the floats
-++this.noActionTime; // Above all the floats
-     }
-     // Spigot end
- 
 @@ -399,7 +399,7 @@ public abstract class LivingEntity extends Entity {
          boolean flag = this instanceof net.minecraft.world.entity.player.Player;
  
@@ -38,15 +29,6 @@ index d27186a78719ac4e3d1ce5b8d7d727f18e9e3a95..3b3b38d2052a767d84596d34d39d097c
                  this.hurt(DamageSource.IN_WALL, 1.0F);
              } else if (flag && !this.level.getWorldBorder().isWithinBounds(this.getBoundingBox())) {
                  double d0 = this.level.getWorldBorder().getDistanceToBorder((Entity) this) + this.level.getWorldBorder().getDamageSafeZone();
-@@ -628,7 +628,7 @@ public abstract class LivingEntity extends Entity {
-     }
- 
-     protected void tickDeath() {
--        ++this.deathTime;
-++this.deathTime;
-         if (this.deathTime >= 20 && !this.isRemoved() && !this.level.isClientSide()) { // CraftBukkit - (this.deathTicks == 20) -> (this.deathTicks >= 20 && !this.dead)
-             this.level.broadcastEntityEvent(this, (byte) 60);
-             this.remove(Entity.RemovalReason.KILLED);
 @@ -1316,6 +1316,15 @@ public abstract class LivingEntity extends Entity {
          return this.getHealth() <= 0.0F;
      }
