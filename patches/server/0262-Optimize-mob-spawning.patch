@@ -51,7 +51,7 @@ index 7e36bcda5b8caee9fb604d26f7b9b22a7b1fea98..5cae421f2f770616664a3b2a99708081
 +
 +    // PufferfishConfig but in purpur
 +    public static boolean enableAsyncMobSpawning = false;
-+    public static void asyncMobSpawning() {
++    private static void asyncMobSpawning() {
 +        enableAsyncMobSpawning = getBoolean("settings.enable-async-mob-spawning", enableAsyncMobSpawning);
 +    }
  }
