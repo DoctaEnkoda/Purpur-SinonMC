@@ -40,26 +40,11 @@ index 72063ba7fb0d04594043cb07034590d597c3d77e..e4f84112f125673916824fdd7c68e0c1
              final PooledHashSets.PooledObjectLinkedOpenHashSet<ServerPlayer> map = entry.getValue();
  
              if (map.referenceCount == 0) {
-diff --git a/src/main/java/net/pl3x/purpur/PurpurConfig.java b/src/main/java/net/pl3x/purpur/PurpurConfig.java
-index 7e36bcda5b8caee9fb604d26f7b9b22a7b1fea98..5cae421f2f770616664a3b2a99708081a956b653 100644
---- a/src/main/java/net/pl3x/purpur/PurpurConfig.java
-+++ b/src/main/java/net/pl3x/purpur/PurpurConfig.java
-@@ -401,4 +401,10 @@ public class PurpurConfig {
-     private static void networkSettings() {
-         useUPnP = getBoolean("settings.network.upnp-port-forwarding", useUPnP);
-     }
-+
-+    // PufferfishConfig but in purpur
-+    public static boolean enableAsyncMobSpawning = false;
-+    private static void asyncMobSpawning() {
-+        enableAsyncMobSpawning = getBoolean("settings.enable-async-mob-spawning", enableAsyncMobSpawning);
-+    }
- }
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 0950f256d8e1cc8e3008cddba91ce79be55c2d5b..7ecf3a41f8a8069b87ffdd9eac36a2bc9f255970 100644
+index 3ba0e6d49965e39f8571908adf548b70f4dbe776..05e44049b0c26f36cfb20146d03e95f871c94a75 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -314,6 +314,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -315,6 +315,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
  
      public volatile Thread shutdownThread; // Paper
      public volatile boolean abnormalExit = false; // Paper
@@ -69,10 +54,10 @@ index 0950f256d8e1cc8e3008cddba91ce79be55c2d5b..7ecf3a41f8a8069b87ffdd9eac36a2bc
      public static <S extends MinecraftServer> S spin(Function<Thread, S> serverFactory) {
          AtomicReference<S> atomicreference = new AtomicReference();
 diff --git a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-index 93c7c4160604d2a6f8dcd3049c414ab5333510b4..16dd108b4ec98d82e12fc968d8213b95b0a6952f 100644
+index d5c61053f6af91aa5d0894750ab86372a91c9a73..36946e934118ea2b46e8aa1008da60201ba64516 100644
 --- a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
-@@ -364,6 +364,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+@@ -387,6 +387,7 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
  
              net.pl3x.purpur.task.BossBarTask.startAll(); // Purpur
  
@@ -81,7 +66,7 @@ index 93c7c4160604d2a6f8dcd3049c414ab5333510b4..16dd108b4ec98d82e12fc968d8213b95
          }
      }
 diff --git a/src/main/java/net/minecraft/server/level/ServerChunkCache.java b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
-index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..e70136688a03b24bffbfbf1855efbedd00326980 100644
+index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..30c2e1287992cb131a709b8ddb5e43dd48c94250 100644
 --- a/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 +++ b/src/main/java/net/minecraft/server/level/ServerChunkCache.java
 @@ -73,6 +73,9 @@ public class ServerChunkCache extends ChunkSource {
@@ -169,7 +154,7 @@ index 5116b1f90c0f27ce1d3cee6632563f32356a1eb6..e70136688a03b24bffbfbf1855efbedd
  
      private void getFullChunk(long pos, Consumer<LevelChunk> chunkConsumer) {
 diff --git a/src/main/java/net/minecraft/world/level/NaturalSpawner.java b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
-index a0db30970adebb244ff41913e8ec1df1eb472a4d..e216d9a3750b7a914433551ef37315dee2708bdc 100644
+index a0db30970adebb244ff41913e8ec1df1eb472a4d..b0db2bb4c22e92c5eb5af76a7d3f67f65fde5e23 100644
 --- a/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 +++ b/src/main/java/net/minecraft/world/level/NaturalSpawner.java
 @@ -167,7 +167,7 @@ public final class NaturalSpawner {
@@ -194,3 +179,18 @@ index 4814e719e0b898464692075170889fdb2729a26a..ffcd18fa852af3f24bdf5398f481b839
  
      private void ensureActiveIsNotIterated() {
          // Paper - replace with better logic, do not delay removals
+diff --git a/src/main/java/net/pl3x/purpur/PurpurConfig.java b/src/main/java/net/pl3x/purpur/PurpurConfig.java
+index 7e36bcda5b8caee9fb604d26f7b9b22a7b1fea98..c802c766892def31585521b165a093c3d558bbd9 100644
+--- a/src/main/java/net/pl3x/purpur/PurpurConfig.java
++++ b/src/main/java/net/pl3x/purpur/PurpurConfig.java
+@@ -401,4 +401,10 @@ public class PurpurConfig {
+     private static void networkSettings() {
+         useUPnP = getBoolean("settings.network.upnp-port-forwarding", useUPnP);
+     }
++
++    // PufferfishConfig but in purpur
++    public static boolean enableAsyncMobSpawning = false;
++    private static void asyncMobSpawning() {
++        enableAsyncMobSpawning = getBoolean("settings.enable-async-mob-spawning", enableAsyncMobSpawning);
++    }
+ }

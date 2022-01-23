@@ -4,6 +4,29 @@ Date: Fri, 14 Jan 2022 19:20:31 +0100
 Subject: [PATCH] Pufferfish Utils
 
 
+diff --git a/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java b/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java
+index c89f6986eda5a132a948732ea1b6923370685317..a69c13e20040c1561d9c2d4d89ec7d4e635134fc 100644
+--- a/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java
++++ b/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java
+@@ -26,7 +26,7 @@ public abstract class AreaMap<E> {
+ 
+     // we use linked for better iteration.
+     // map of: coordinate to set of objects in coordinate
+-    protected final Long2ObjectOpenHashMap<PooledLinkedHashSets.PooledObjectLinkedOpenHashSet<E>> areaMap = new Long2ObjectOpenHashMap<>(1024, 0.7f);
++    protected Long2ObjectOpenHashMap<PooledLinkedHashSets.PooledObjectLinkedOpenHashSet<E>> areaMap = new Long2ObjectOpenHashMap<>(1024, 0.7f); // Pufferfish - not actually final
+     protected final PooledLinkedHashSets<E> pooledHashSets;
+ 
+     protected final ChangeCallback<E> addCallback;
+@@ -160,7 +160,8 @@ public abstract class AreaMap<E> {
+     protected abstract PooledLinkedHashSets.PooledObjectLinkedOpenHashSet<E> getEmptySetFor(final E object);
+ 
+     // expensive op, only for debug
+-    protected void validate(final E object, final int viewDistance) {
++    protected void validate0(final E object, final int viewDistance) { // Pufferfish - rename this thing just in case it gets used I'd rather a compile time error.
++        if (true) throw new UnsupportedOperationException(); // Pufferfish - not going to put in the effort to fix this if it doesn't ever get used.
+         int entiesGot = 0;
+         int expectedEntries = (2 * viewDistance + 1);
+         expectedEntries *= expectedEntries;
 diff --git a/src/main/java/com/destroystokyo/paper/util/misc/PlayerAreaMap.java b/src/main/java/com/destroystokyo/paper/util/misc/PlayerAreaMap.java
 index 46954db7ecd35ac4018fdf476df7c8020d7ce6c8..1ad890a244bdf6df48a8db68cb43450e08c788a6 100644
 --- a/src/main/java/com/destroystokyo/paper/util/misc/PlayerAreaMap.java
@@ -210,26 +233,3 @@ index 0000000000000000000000000000000000000000..a0577f3bed79500c3dd6e7f171e40650
 +	}
 +}
 \ No newline at end of file
-diff --git a/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java b/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java
-index c89f6986eda5a132a948732ea1b6923370685317..a69c13e20040c1561d9c2d4d89ec7d4e635134fc 100644
---- a/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java
-+++ b/src/main/java/com/destroystokyo/paper/util/misc/AreaMap.java
-@@ -26,7 +26,7 @@ public abstract class AreaMap<E> {
- 
-     // we use linked for better iteration.
-     // map of: coordinate to set of objects in coordinate
--    protected final Long2ObjectOpenHashMap<PooledLinkedHashSets.PooledObjectLinkedOpenHashSet<E>> areaMap = new Long2ObjectOpenHashMap<>(1024, 0.7f);
-+    protected Long2ObjectOpenHashMap<PooledLinkedHashSets.PooledObjectLinkedOpenHashSet<E>> areaMap = new Long2ObjectOpenHashMap<>(1024, 0.7f); // Pufferfish - not actually final
-     protected final PooledLinkedHashSets<E> pooledHashSets;
- 
-     protected final ChangeCallback<E> addCallback;
-@@ -160,7 +160,8 @@ public abstract class AreaMap<E> {
-     protected abstract PooledLinkedHashSets.PooledObjectLinkedOpenHashSet<E> getEmptySetFor(final E object);
- 
-     // expensive op, only for debug
--    protected void validate(final E object, final int viewDistance) {
-+    protected void validate0(final E object, final int viewDistance) { // Pufferfish - rename this thing just in case it gets used I'd rather a compile time error.
-+        if (true) throw new UnsupportedOperationException(); // Pufferfish - not going to put in the effort to fix this if it doesn't ever get used.
-         int entiesGot = 0;
-         int expectedEntries = (2 * viewDistance + 1);
-         expectedEntries *= expectedEntries;
