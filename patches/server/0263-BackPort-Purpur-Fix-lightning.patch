@@ -1,0 +1,20 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: BillyGalbreath <Blake.Galbreath@Gmail.com>
+Date: Sun, 23 Jan 2022 02:31:56 +0100
+Subject: [PATCH] BackPort Purpur : Fix lightning
+
+Commit : https://github.com/PurpurMC/Purpur/commit/90f8beddd406ec545835dd822c174d93972e0a17
+
+diff --git a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
+index db7904b1bb402a36684b97c443336630762aeaf9..e822406203e8139df747cd70bd666a790654199a 100644
+--- a/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
++++ b/src/main/java/net/minecraft/world/level/chunk/LevelChunk.java
+@@ -177,7 +177,7 @@ public class LevelChunk implements ChunkAccess {
+    // shouldDoLightning compiles down to 29 bytes, which with the default of 35 byte inlining should guarantee an inline
+     public final boolean shouldDoLightning(java.util.Random random) {
+         if (this.lightningTick-- <= 0) {
+-            this.lightningTick = random.nextInt(100000) << 1;
++            this.lightningTick = random.nextInt(this.level.spigotConfig.thunderChance) << 1; // Purpur
+             return true;
+         }
+         return false;

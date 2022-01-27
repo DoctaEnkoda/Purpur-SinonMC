@@ -38,6 +38,7 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven("https://maven.fabricmc.net/")
         maven("https://oss.sonatype.org/content/groups/public/")
         maven("https://papermc.io/repo/repository/maven-public/")
         maven("https://ci.emc.gs/nexus/content/groups/aikar/")
