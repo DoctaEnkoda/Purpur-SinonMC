@@ -44,7 +44,7 @@ index 4662952bd0a389fe77e00ede9ab4a57f33522794..a37ca23682272d5ddaf1a2246917e6c4
  
 +    // Pufferfish start
 +    implementation("org.yaml:snakeyaml:1.28")
-+    implementation ("me.carleslc.Simple-YAML:Simple-Yaml:ed30ff3e6b") {
++    implementation ("me.carleslc.Simple-YAML:Simple-Yaml:1.8") {
 +        exclude(group="org.yaml", module="snakeyaml")
 +    }
 +    // Pufferfish end
